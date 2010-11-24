@@ -1,5 +1,5 @@
 //
-// LESS - Leaner CSS v1.0.36
+// LESS - Leaner CSS v1.0.38
 // http://lesscss.org
 // 
 // Copyright (c) 2010, Alexis Sellier
@@ -197,6 +197,7 @@ less.Parser = function Parser(env) {
         paths: env && env.paths || [],  // Search paths, when importing
         queue: [],                      // Files which haven't been imported yet
         files: {},                      // Holds the imported parse trees
+        mime:  env && env.mime,         // MIME type of .less files
         push: function (path, callback) {
             var that = this;
             this.queue.push(path);
@@ -211,7 +212,7 @@ less.Parser = function Parser(env) {
                 callback(root);
 
                 if (that.queue.length === 0) { finish() }       // Call `finish` if we're done importing
-            });
+            }, env);
         }
     };
 
@@ -664,11 +665,26 @@ less.Parser = function Parser(env) {
                     var value;
 
                     if (input.charAt(i) !== 'u' || !$(/^url\(/)) return;
-                    value = $(this.entities.quoted) || $(this.entities.variable) || $(/^[-\w%@$\/.&=:;#+?]+/) || "";
+                    value = $(this.entities.quoted)  || $(this.entities.variable) ||
+                            $(this.entities.dataURI) || $(/^[-\w%@$\/.&=:;#+?]+/) || "";
                     if (! $(')')) throw new(Error)("missing closing ) for url()");
 
-                    return new(tree.URL)((value.value || value instanceof tree.Variable)
+                    return new(tree.URL)((value.value || value.data || value instanceof tree.Variable)
                                         ? value : new(tree.Anonymous)(value), imports.paths);
+                },
+
+                dataURI: function () {
+                    var obj;
+
+                    if ($(/^data:/)) {
+                        obj         = {};
+                        obj.mime    = $(/^[^\/]+\/[^,;)]+/)     || '';
+                        obj.charset = $(/^;\s*charset=[^,;)]+/) || '';
+                        obj.base64  = $(/^;\s*base64/)          || '';
+                        obj.data    = $(/^,\s*[^)]+/);
+
+                        if (obj.data) { return obj }
+                    }
                 },
 
                 //
@@ -1189,14 +1205,14 @@ if (typeof(window) !== 'undefined') {
     //
     // Used by `@import` directives
     //
-    less.Parser.importer = function (path, paths, callback) {
+    less.Parser.importer = function (path, paths, callback, env) {
         if (path.charAt(0) !== '/' && paths.length > 0) {
             path = paths[0] + path;
         }
         // We pass `true` as 3rd argument, to force the reload of the import.
         // This is so we can get the syntax tree as opposed to just the CSS output,
         // as we need this to evaluate the current stylesheet.
-        loadStyleSheet({ href: path, title: path }, callback, true);
+        loadStyleSheet({ href: path, title: path, type: env.mime }, callback, true);
     };
 }
 
@@ -1272,6 +1288,20 @@ tree.functions = {
 
         hsl.l -= amount.value / 100;
         hsl.l = clamp(hsl.l);
+        return hsla(hsl);
+    },
+    fadein: function (color, amount) {
+        var hsl = color.toHSL();
+
+        hsl.a += amount.value / 100;
+        hsl.a = clamp(hsl.a);
+        return hsla(hsl);
+    },
+    fadeout: function (color, amount) {
+        var hsl = color.toHSL();
+
+        hsl.a -= amount.value / 100;
+        hsl.a = clamp(hsl.a);
         return hsla(hsl);
     },
     spin: function (color, amount) {
@@ -2133,19 +2163,24 @@ tree.Selector.prototype.toCSS = function (env) {
 (function (tree) {
 
 tree.URL = function (val, paths) {
-    // Add the base path if the URL is relative and we are in the browser
-    if (!/^(?:https?:\/|file:\/)?\//.test(val.value) && paths.length > 0 && typeof(window) !== 'undefined') {
-        val.value = paths[0] + (val.value.charAt(0) === '/' ? val.value.slice(1) : val.value);
+    if (val.data) {
+        this.attrs = val;
+    } else {
+        // Add the base path if the URL is relative and we are in the browser
+        if (!/^(?:https?:\/|file:\/)?\//.test(val.value) && paths.length > 0 && typeof(window) !== 'undefined') {
+            val.value = paths[0] + (val.value.charAt(0) === '/' ? val.value.slice(1) : val.value);
+        }
+        this.value = val;
+        this.paths = paths;
     }
-    this.value = val;
-    this.paths = paths;
 };
 tree.URL.prototype = {
     toCSS: function () {
-        return "url(" + this.value.toCSS() + ")";
+        return "url(" + (this.attrs ? 'data:' + this.attrs.mime + this.attrs.charset + this.attrs.base64 + this.attrs.data
+                                    : this.value.toCSS()) + ")";
     },
     eval: function (ctx) {
-        return new(tree.URL)(this.value.eval(ctx), this.paths);
+        return this.attrs ? this : new(tree.URL)(this.value.eval(ctx), this.paths);
     }
 };
 
@@ -2326,7 +2361,7 @@ function loadStyleSheet(sheet, callback, reload, remaining) {
         href = url.slice(0, url.lastIndexOf('/') + 1) + href;
     }
 
-    xhr(sheet.href, function (data, lastModified) {
+    xhr(sheet.href, sheet.type, function (data, lastModified) {
         if (!reload && styles &&
            (new(Date)(lastModified).valueOf() ===
             new(Date)(styles.timestamp).valueOf())) {
@@ -2338,7 +2373,8 @@ function loadStyleSheet(sheet, callback, reload, remaining) {
             try {
                 new(less.Parser)({
                     optimization: less.optimization,
-                    paths: [href.replace(/[\w\.-]+$/, '')]
+                    paths: [href.replace(/[\w\.-]+$/, '')],
+                    mime: sheet.type
                 }).parse(data, function (e, root) {
                     if (e) { return error(e, href) }
                     try {
@@ -2410,7 +2446,7 @@ function createCSS(styles, sheet, lastModified) {
     }
 }
 
-function xhr(url, callback, errback) {
+function xhr(url, type, callback, errback) {
     var xhr = getXMLHttpRequest();
     var async = isFileProtocol ? false : less.async;
 
@@ -2418,6 +2454,7 @@ function xhr(url, callback, errback) {
         xhr.overrideMimeType('text/css');
     }
     xhr.open('GET', url, async);
+    xhr.setRequestHeader('Accept', type || 'text/x-less, text/css; q=0.9, */*; q=0.5');
     xhr.send(null);
 
     if (isFileProtocol) {
