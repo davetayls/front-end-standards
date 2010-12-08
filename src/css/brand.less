@@ -21,28 +21,11 @@ html { overflow-y: scroll; }
 
 /* set global font family */
 body, select, input, textarea {
-	font-family: Arial, Helvetica, "Nimbus Sans L", "Free Sans", Sans-Serif; /* Most consistent Arial Based */
-	
-	/* Ref: http://articles.sitepoint.com/article/eight-definitive-font-stacks/2 */
-
-	/* Rich Helvetica/Arial-based sans serif stack  	font-family: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif; */
-
-	/* Verdana-based sans serif							font-family: Corbel, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", Verdana, "Verdana Ref", sans-serif; */
-
-	/* traditional Garamond-based serif stack			font-family: "Palatino Linotype", Palatino, Palladio, "URW Palladio L", "Book Antiqua", Baskerville, "Bookman Old Style", "Bitstream Charter", "Nimbus Roman No9 L", Garamond, "Apple Garamond", "ITC Garamond Narrow", "New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif; */
-
-	/* Trebuchet-based sans serif						font-family: "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif; */
-
-	/* monospace										font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace; */
+	font-family: Tahoma, Arial, Helvetica, "Nimbus Sans L", "Free Sans", Sans-Serif; /* Most consistent Arial Based */
 }	
 body        {
-	/* font-size: 62.5%; /*10px*/
-	/* font-size: 68.8%; /*11px*/
 	font-size: 75%; /*12px*/
-	/* font-size: 81.3%; /*13px*/
-
-	line-height: 1.22em;	
-
+	line-height: 1.3em;	
 }
 body.acc-med	{ font-size: 0.92em; }
 body.acc-large	{ font-size: 1.1em; }
@@ -62,9 +45,9 @@ a { outline: none; }
 a:focus { outline: thin dotted; }
 a:active, a:hover { outline: none; }
 
-a, a:visited, a:link      { }
-a:hover, a:active     { }
-a:focus     { }
+a, a:visited, a:link      { color: #00ADEF; text-decoration: none; }
+a:hover, a:active     { text-decoration: underline; }
+a:focus     { text-decoration: underline; }
 a img { border: none; }
 
 /*  j.mp/webkit-tap-highlight-color */
@@ -72,7 +55,12 @@ a:link { -webkit-tap-highlight-color: #FF5E99; }
 
 abbr        {}
 address     { }
-blockquote  {}
+blockquote p {
+	color: #676767;
+	font-size: 2.2em;
+	line-height: 0.9em;
+	padding: 10px 20px;
+}
 
 /* bicubic resizing for non-native sized IMG: 
    code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/ */
@@ -82,13 +70,22 @@ img { -ms-interpolation-mode: bicubic; }
 p           { margin-bottom: 5px; }
 
 pre { 
-  padding: 15px; 
-  
-  /* www.pathf.com/blogs/2008/05/formatting-quoted-code-in-blog-posts-css21-white-space-pre-wrap/ */
-  white-space: pre; /* CSS2 */
-  white-space: pre-wrap; /* CSS 2.1 */
-  white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
-  word-wrap: break-word; /* IE */
+    /*
+	background-color:#333333;
+	padding: 15px; 
+	border-left:5px solid #777777;
+	color:#CCCCCC;
+	display: block;
+	font-size:1.1em;
+	line-height: 1.1em;
+	margin:10px 0;
+	padding:10px;
+    */
+	/* www.pathf.com/blogs/2008/05/formatting-quoted-code-in-blog-posts-css21-white-space-pre-wrap/ */
+	white-space: pre; /* CSS2 */
+	white-space: pre-wrap; /* CSS 2.1 */
+	white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+	word-wrap: break-word; /* IE */
 }
 strong      {}
 small { font-size:85%; }
@@ -99,18 +96,37 @@ small { font-size:85%; }
 pre, code, kbd, samp { font-family: monospace, sans-serif; }
 
 
-
+/*
+    fonts
+-----------------------------------------------------*/
+.leagueGothic() {
+    font-family: "league-gothic-1", "league-gothic-2", Tahoma, Arial, Helvetica, "Nimbus Sans L", "Free Sans", Sans-Serif;
+}
 
 /* 
 	headers 
 ----------------------------------------------------*/
 /* www.aestheticallyloyal.com/public/optimize-legibility/ */ 
 h1,h2,h3,h4,h5,h6 { font-weight: bold; text-rendering: optimizeLegibility; }
-h1          { }
-h2		{ }
-h3		{ }
-h4		{ }
-h5          { }
+h1          { padding: 0 0 10px; }
+h2     {
+	color:#84D725;
+	font-size:1.7em;
+	font-weight:normal;
+	letter-spacing:-0.008em;
+	line-height: 1.15em;	
+	margin-bottom: 10px;	
+}
+h3     { 
+	font-size: 1.1em;
+	font-weight: bold;
+	margin-bottom: 8px;
+	text-transform: uppercase;
+}
+h4     { }
+h5          { 
+	margin: 0 0 5px;
+}
 h6          { }
 
 h2 strong,

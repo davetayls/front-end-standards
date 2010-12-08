@@ -1,5 +1,9 @@
 require(["core/debug","h5f/h5f"], function() {
     $(function() {
+	
+		require(['core/tableofcontents.js'], function(toc){
+			toc.init();
+		});
         //This function is called when the page is loaded (the DOMContentLoaded
         //event) and when all required scripts are loaded.
 
