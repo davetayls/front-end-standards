@@ -1,4 +1,4 @@
-define(['jquery', 'jquery/jquery.tableofcontents'], function ($) {
+define(['jquery/jquery.tableofcontents'], function () {
 	return {
 		init: function(){
 			$('#toc').tableOfContents();
