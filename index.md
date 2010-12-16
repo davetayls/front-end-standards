@@ -16,16 +16,16 @@ Front-End Code Standards and Best Practices
 	   (/   \\ /\\\
 			// ````
 	 ======((`=======
-	// I am loving ascii art, inspired by looking at Paul Irish's source ;o)
+	// I am loving ascii art, inspired by looking at Paul Irish
 
 Best Practices
 --------------
 
 ### Pillars of Front-end Development
 
-* Separation of presentation, content, and behavior.
-* [Markup should be well-formed, semantically correct](http://www.bbc.co.uk/guidelines/futuremedia/technical/semantic_markup.shtml) and [generally valid](#validation).
-* [Javascript should progressively enhance](http://icant.co.uk/articles/pragmatic-progressive-enhancement/) the experience
+*	Separation of presentation, content, and behavior.
+*	[Markup should be well-formed, semantically correct](http://www.bbc.co.uk/guidelines/futuremedia/technical/semantic_markup.shtml) and [generally valid](#validation).
+*	[Javascript should progressively enhance](http://icant.co.uk/articles/pragmatic-progressive-enhancement/) the experience
 
 ### Links
 When putting example links within front end code which will be integrated at a later date use href="none" instead of href="#". These will then show up when we crawl for broken links.
@@ -35,8 +35,8 @@ When putting example links within front end code which will be integrated at a l
 
 ### Media
 
-* Always have the logo as a single img on the page. This will enable it to be picked up easily when the page is shared with social sites.
-* Put all media including images which will end up being added by the CMS in to the /cms-content folder within the root of the site
+*	Always have the logo as a single img on the page. This will enable it to be picked up easily when the page is shared with social sites.
+*	Put all media including images which will end up being added by the CMS in to the /cms-content folder within the root of the site
 
 ### Indentation
 For all code languages, we require indentation to be done via soft tabs (using the space character). Hitting Tab in your text editor shall be equivalent to **four spaces**
@@ -68,16 +68,42 @@ Developers are also need to support legacy sites running xhtml doctypes:
 
 ### Coding Practices
 
-* Make use of DL (definition lists) and BLOCKQUOTE, when appropriate.
-* Items in list form should always be housed in a UL, OL, or DL, never a set of DIVs or Ps.
-* Use label fields to label each form field, the for attribute should associate itself with the input field, so users can click the labels. cursor:pointer; on the label is wise, as well. note 1 note 2
-* Do not use the size attribute on your input fields. The size attribute is relative to the font-size of the text inside the input. Instead use css width.
-* Place an html comment on some closing div tags to indicate what element you're closing. It will help when there is lots of nesting and indentation.
-* Tables shouldn't be used for page layout (duh).
-* Use microformats where appropriate, specifically hCard and adr.
-* Always use title-case for headers and titles. Do not use **ALL CAPS** or all **lowercase** titles in markup, instead apply the CSS property `text-transform:uppercase/lowercase`.
+*	Make use of DL (definition lists) and BLOCKQUOTE, when appropriate.
+*	Use label fields to label each form field, the for attribute should associate itself with the input field, so users can click the labels. cursor:pointer; on the label is wise, as well. note 1 note 2
+*	Do not use the size attribute on your input fields. The size attribute is relative to the font-size of the text inside the input. Instead use css width.
+*	Place an html comment on some closing div tags to indicate what element you're closing. It will help when there is lots of nesting and indentation.
+*	Tables shouldn't be used for page layout (duh).
+*	Use microformats where appropriate, specifically hCard and adr.
+*	Always use title-case for headers and titles. Do not use **ALL CAPS** or all **lowercase** titles in markup, instead apply the CSS property `text-transform:uppercase/lowercase`.
 
+#### Lists
+*	Items in list form should always be housed in a UL, OL, or DL, never a set of DIVs or Ps.
+*	`<ul>` and `<ol>` type lists MUST have at least one `<li>` item.
+*	All lists SHOULD be preceded by a header - `<h*>description</h*>` - that describes the content of the list as suggested in WCAG 2.0. This helps users with assistive technologies to understand the semantics of the list.
+
+	*	[http://www.w3.org/TR/2008/WD-WCAG20-TECHS-20080430/H42.html#H42-ex1](http://www.w3.org/TR/2008/WD-WCAG20-TECHS-20080430/H42.html#H42-ex1)
+	*	[http://www.w3.org/TR/2008/WD-WCAG20-TECHS-20080430/H69.html#H69-ex2](http://www.w3.org/TR/2008/WD-WCAG20-TECHS-20080430/H69.html#H69-ex2)
+	*	[http://www.dhs.state.il.us/IITAA/IITAAWebImplementationGuidelines.html#web1.5](http://www.dhs.state.il.us/IITAA/IITAAWebImplementationGuidelines.html#web1.5)
+
+	##### Adding a header to indicate the list is navigation
 	
+		<!-- Logo, banner graphic, search form, etc.  -->
+		<h2>Navigation</h2>
+		<ul>
+			<li><a href="about.htm">About us</a></li>
+			<li><a href="contact.htm">Contact us</a></li>
+			...
+		</ul>
+		<h2>All about headings</h2>
+		<!-- Text, images, other material 
+			 making up the main content... --> 
+
+	##### These headers can be visually hidden if not present on the design.
+	
+		<h2 class="visuallyhidden">Navigation</h2>
+	
+
+
 CSS
 ---
 
@@ -90,16 +116,16 @@ In this example, the color of the P element would be green. The declaration in t
 	// simply put calculate using the concatenated 
 	// number from style|id|class|element
 	// eg: 0|1|0|0 = 100, 0|1|0|12 = 1012
-	*             {}  /* a=0 b=0 c=0 d=0 -> specificity = 0,0,0,0 */
-	li            {}  /* a=0 b=0 c=0 d=1 -> specificity = 0,0,0,1 */
-	li:first-line {}  /* a=0 b=0 c=0 d=2 -> specificity = 0,0,0,2 */
-	ul li         {}  /* a=0 b=0 c=0 d=2 -> specificity = 0,0,0,2 */
-	ul ol+li      {}  /* a=0 b=0 c=0 d=3 -> specificity = 0,0,0,3 */
-	h1 + *[rel=up]{}  /* a=0 b=0 c=1 d=1 -> specificity = 0,0,1,1 */
-	ul ol li.red  {}  /* a=0 b=0 c=1 d=3 -> specificity = 0,0,1,3 */
-	li.red.level  {}  /* a=0 b=0 c=2 d=1 -> specificity = 0,0,2,1 */
-	#x34y         {}  /* a=0 b=1 c=0 d=0 -> specificity = 0,1,0,0 */
-	style=""          /* a=1 b=0 c=0 d=0 -> specificity = 1,0,0,0 */
+	*	            {}  /*	a=0 b=0 c=0 d=0 -> specificity = 0,0,0,0 */
+	li            {}  /*	a=0 b=0 c=0 d=1 -> specificity = 0,0,0,1 */
+	li:first-line {}  /*	a=0 b=0 c=0 d=2 -> specificity = 0,0,0,2 */
+	ul li         {}  /*	a=0 b=0 c=0 d=2 -> specificity = 0,0,0,2 */
+	ul ol+li      {}  /*	a=0 b=0 c=0 d=3 -> specificity = 0,0,0,3 */
+	h1 + *[rel=up]{}  /*	a=0 b=0 c=1 d=1 -> specificity = 0,0,1,1 */
+	ul ol li.red  {}  /*	a=0 b=0 c=1 d=3 -> specificity = 0,0,1,3 */
+	li.red.level  {}  /*	a=0 b=0 c=2 d=1 -> specificity = 0,0,2,1 */
+	#x34y         {}  /*	a=0 b=1 c=0 d=0 -> specificity = 0,1,0,0 */
+	style=""          /*	a=1 b=0 c=0 d=0 -> specificity = 1,0,0,0 */
 
 	<HEAD>
 		<STYLE type="text/css">
@@ -110,13 +136,13 @@ In this example, the color of the P element would be green. The declaration in t
 		<P ID=x97z style="color: green">
 	</BODY>
 
-* We structure and separate code in to semantically named CSS files. 
-* Try to use the least specific css selector needed to achieve a style
+*	We structure and separate code in to semantically named CSS files. 
+*	Try to use the least specific css selector needed to achieve a style
 
 #### Useful articles
-* [Specificity Spec](http://www.w3.org/TR/CSS2/cascade.html#specificity)
-* [CSS Specificity And Inheritance](http://www.smashingmagazine.com/2010/04/07/css-specificity-and-inheritance/)
-* [CSS: Specificity Wars](http://www.stuffandnonsense.co.uk/archives/css_specificity_wars.html)
+*	[Specificity Spec](http://www.w3.org/TR/CSS2/cascade.html#specificity)
+*	[CSS Specificity And Inheritance](http://www.smashingmagazine.com/2010/04/07/css-specificity-and-inheritance/)
+*	[CSS: Specificity Wars](http://www.stuffandnonsense.co.uk/archives/css_specificity_wars.html)
 
 ### Inline Styles
 
@@ -140,12 +166,12 @@ We use the px unit of measurement to define font size, because it offers absolut
 
 	#selector {
 		font-size: 13px;
-		line-height: 1.5;  /*  13 * 1.5 = 19.5 ~ Rounds to 20px. */
+		line-height: 1.5;  /*	 13 *	1.5 = 19.5 ~ Rounds to 20px. */
 	}
 
 #### Incorrect
 
-	/*  Equivalent to 13px font-size and 20px line-height, 
+	/*	 Equivalent to 13px font-size and 20px line-height, 
 		but only if the browser default text size is 16px. */
 	#selector {
 		font-size: 0.813em;
@@ -200,14 +226,14 @@ In general, elements in Internet Explorer's Dynamic HTML engine are not responsi
 **Note:** The element that is responsible for sizing and positioning an element may be an ancestor, not just the element's immediate parent.) The major benefits of each element not having its own layout are performance and simplicity.
 
 **Keep Reading:**
-* [MSDN HasLayout Overview](http://msdn.microsoft.com/en-us/library/bb250481.aspx)
-* [http://www.satzansatz.de/cssd/onhavinglayout.html](http://www.satzansatz.de/cssd/onhavinglayout.html)
+*	[MSDN HasLayout Overview](http://msdn.microsoft.com/en-us/library/bb250481.aspx)
+*	[http://www.satzansatz.de/cssd/onhavinglayout.html](http://www.satzansatz.de/cssd/onhavinglayout.html)
 
 ### Shorthand
 
 In general, CSS shorthand is preferred because of its terseness, and the ability to later go back and add in values that are already present, such as the case with margin and padding. 
 
-* Developers should be aware of Top, Right, Bottom, Left, denoting the order in which the sides of an element are defined, in a clock-wise manner. 
+*	Developers should be aware of Top, Right, Bottom, Left, denoting the order in which the sides of an element are defined, in a clock-wise manner. 
 	
 	#### If bottom is undefined, it inherits its value from top. 
 		
@@ -222,31 +248,31 @@ In general, CSS shorthand is preferred because of its terseness, and the ability
 		.pad { padding: 10px; } // equivalent: 10px 10px 10px 10px
 
 For more on reducing stylesheet code redundancy, and using CSS shorthand in general:
-* [http://qrayg.com/journal/news/css-background-shorthand](http://qrayg.com/journal/news/css-background-shorthand)
-* [http://sonspring.com/journal/css-redundancy](http://sonspring.com/journal/css-redundancy)
-* [http://dustindiaz.com/css-shorthand](http://dustindiaz.com/css-shorthand)
+*	[http://qrayg.com/journal/news/css-background-shorthand](http://qrayg.com/journal/news/css-background-shorthand)
+*	[http://sonspring.com/journal/css-redundancy](http://sonspring.com/journal/css-redundancy)
+*	[http://dustindiaz.com/css-shorthand](http://dustindiaz.com/css-shorthand)
 
 ### General coding principles
-* Add css through external files.
-* Css links should always be in the `<head>` of the document and before any `<script>` declarations.
-* Use the `<link />` tag to include, never the @import.
+*	Add css through external files.
+*	Css links should always be in the `<head>` of the document and before any `<script>` declarations.
+*	Use the `<link />` tag to include, never the @import.
   Including a stylesheet
   
 		<link rel="stylesheet" type="text/css" href="myStylesheet.css" />
 	
-* Don't use inline styling
+*	Don't use inline styling
 
 		<p style="font-size: 12px; color: #FFFFFF">This is poor form, I say</p>
 
-* Don't include styles inline in the document, either in a style tag or on the elements. It's harder to track down style rules.
-* Use a reset css file (like Eric Meyers reset) to zero our cross-browser weirdness.
-* Use a font-normalization file like YUI fonts.css
-* Elements that occur only once inside a document should use IDs, otherwise, use classes.
-* Understand cascading and selector specificity so you can write very terse and effective code.
-* Write selectors that are optimized for speed. Aka:
-	* where possible, avoid expensive css selectors. 
-	* Avoid the * wildcard selector. 
-	* Don't qualify ID selectors (e.g. div#myid) or class selectors (e.g. table.results) unless its neccessary for readability or for efficiency. 
+*	Don't include styles inline in the document, either in a style tag or on the elements. It's harder to track down style rules.
+*	Use a reset css file (like Eric Meyers reset) to zero our cross-browser weirdness.
+*	Use a font-normalization file like YUI fonts.css
+*	Elements that occur only once inside a document should use IDs, otherwise, use classes.
+*	Understand cascading and selector specificity so you can write very terse and effective code.
+*	Write selectors that are optimized for speed. Aka:
+	*	where possible, avoid expensive css selectors. 
+	*	Avoid the *	wildcard selector. 
+	*	Don't qualify ID selectors (e.g. div#myid) or class selectors (e.g. table.results) unless its neccessary for readability or for efficiency. 
   
   More on [writing efficient css on the MDC](https://developer.mozilla.org/en/Writing_Efficient_CSS).
 
@@ -266,33 +292,86 @@ For more on reducing stylesheet code redundancy, and using CSS shorthand in gene
 
 ### Images
 
-* For repeating images, use something larger than 1x1 pixels
-* You should never be using spacer images.
-* Use CSS sprites generously. They make hover states easy, improve page load time, and reduce carbon dioxide emissions.
-* Typically, all images should be sliced with a transparent background (PNG8). All should be cropped tightly to the image boundaries.
+*	For repeating images, use something larger than 1x1 pixels
+*	You should never be using spacer images.
+*	Use CSS sprites generously. They make hover states easy, improve page load time, and reduce carbon dioxide emissions.
+*	Typically, all images should be sliced with a transparent background (PNG8). All should be cropped tightly to the image boundaries.
 
-	* However, the logo should always have a background matte and have padding before the crop. (so other people can hotlink to the file)
+	*	However, the logo should always have a background matte and have padding before the crop. (so other people can hotlink to the file)
 
 JavaScript
 ----------
 
+We primarily develop new applications in [jQuery](http://jquery.com), though we have expertise in plain JavaScript as well as all major modern javascript libraries.
+
+### General coding principles
+*	99% of code should be housed in external javascript files. They should be included at the END of the BODY tag for maximum page performance.
+*	Don't rely on the user-agent string if you don't have to. Do proper feature detection. (More at [Dive Into HTML5: Detection](http://diveintohtml5.org/detect.html) & [jQuery.support docs](http://api.jquery.com/jQuery.support/))
+*	Don't use `document.write()`.
+*	All Boolean variables should start with "is". Test for positive conditions
+
+		isValid = (test.value >= 4 && test.success);
+
+*	Name variables and functions logically: For example, popUpWindowForAd rather than myWindow.
+*	Large blocks of code should be separated by flowerbox comments to indicate chapters of the file.
+*	Constants or configuration variables (like animation durations, etc.) should be at the top of the file.
+*	Strive to create functions which can be generalized, take parameters, and return values. This allows for substantial code reuse and, when combined with includes or external scripts, can reduce the overhead when scripts need to change.
+
+	*	For example, instead of hard coding a pop-window with window size, options, and url, consider creating:
+            
+            function(size, url, options){ ... }.
+	
+*	Comment your code! It helps reduce time spent troubleshooting JavaScript functions.
+*	Don't waste your time with <!-- --> comments surrounding your inline javascript, unless you care about Netscape 4. :)
+*	Surround your inline javascript with `<![CDATA[ ]]>` if you're working in XHTML.
+*	Minimize global variables.
+*	When specifying any global variable, clearly identify it
+
+		window.globalVar = { ... }
+
+### White-space
+
+In general, the use of whitespace should follow longstanding English reading conventions. Such that, there will be one space after each comma and colon (and semi-colon where applicable), but no spaces immediately inside the right and left sides of parenthesis. In short, we advocate readability within reason. Additionally, braces should always appear on the same line as their preceding argument.
+
+#### Consider the following examples of a JavaScript for-loop...
+
+##### Correct
+
+	for (var i = 0, j = arr.length; i < j; i++) {
+		// Do something.
+	}
+
+##### Incorrect
+
+	for ( var i = 0, j = arr.length; i < j; i++ )
+	{
+		// Do something.
+	}
+
+##### Also incorrect
+
+	for(var i=0,j=arr.length;i<j;i++){
+		// Do something.
+	}
+
+
 ### Intellisense and Documenting
-* [JsDoc Toolkit](http://code.google.com/p/jsdoc-toolkit-vsdoc/)
-* [Javascript Intellisense in Visual Studio "Orcas"](http://weblogs.asp.net/scottgu/archive/2007/04/24/javascript-intellisense-in-visual-studio-orcas.aspx)
-* [VS 2008 JavaScript Intellisense](http://weblogs.asp.net/scottgu/archive/2007/06/21/vs-2008-javascript-intellisense.aspx)
-* [JavaScript Intellisense Improvements with VS 2010](http://weblogs.asp.net/scottgu/archive/2010/04/08/javascript-intellisense-improvements-with-vs-2010.aspx)
-* [VS Intellisense Comments](http://weblogs.asp.net/bleroy/archive/2007/04/23/the-format-for-javascript-doc-comments.aspx)
+*	[JsDoc Toolkit](http://code.google.com/p/jsdoc-toolkit-vsdoc/)
+*	[Javascript Intellisense in Visual Studio "Orcas"](http://weblogs.asp.net/scottgu/archive/2007/04/24/javascript-intellisense-in-visual-studio-orcas.aspx)
+*	[VS 2008 JavaScript Intellisense](http://weblogs.asp.net/scottgu/archive/2007/06/21/vs-2008-javascript-intellisense.aspx)
+*	[JavaScript Intellisense Improvements with VS 2010](http://weblogs.asp.net/scottgu/archive/2010/04/08/javascript-intellisense-improvements-with-vs-2010.aspx)
+*	[VS Intellisense Comments](http://weblogs.asp.net/bleroy/archive/2007/04/23/the-format-for-javascript-doc-comments.aspx)
 
 
 Accessibility
 -------------
 
-* It's the law!
-* More site visitors
-* Better browsing experience
-* Google likes it
-* Improves your image
-* It's not just a "disabled issue".
+*	It's the law!
+*	More site visitors
+*	Better browsing experience
+*	Google likes it
+*	Improves your image
+*	It's not just a "disabled issue".
 
 ARIA -Accessible Rich Internet Applications
 -------------------------------------------
@@ -302,8 +381,8 @@ Widgets aren't percieved like we do as contained items
 
 Roles and regions
 
-* [Roles](http://www.w3.org/WAI/PF/aria/roles.html)
-* [Regions](http://www.w3.org/WAI/PF/aria/rdf_model.svg)
+*	[Roles](http://www.w3.org/WAI/PF/aria/roles.html)
+*	[Regions](http://www.w3.org/WAI/PF/aria/rdf_model.svg)
 
 A good start is to apply the `role` attribute to particular sections of the page. Here's a basic guide:
 
@@ -323,7 +402,7 @@ A good start is to apply the `role` attribute to particular sections of the page
 Progressive enhancement
 -----------------------
 
-* Javascript
+*	Javascript
 
 Integrating common UI code
 --------------------------
@@ -350,11 +429,18 @@ Integrating common UI code
 
 Forms
 -----
+*	For compound elements (where text is used to label a form element), the `<label>` tag MUST be used to explicitly associate the relevant text label with its form element.
+*	This MUST be done using a 'for' attribute on the label and a pairing 'id' attribute on the element.
+	
+		<label for="apple">apple</label><input id="apple" />.
+
+*	A label-input pair SHOULD NOT be contained in a `<dl>`, as this provides no additional structural information.
+
 
 We have different types of forms
 
-* form-stack
-* form-margin
+*	form-stack
+*	form-margin
 
 Demo: http://the-taylors.org/standards/forms.htm
 
@@ -367,6 +453,6 @@ References
 ----------
 Thanks to the following sites for inspiration and reuse.
 
-* [XHTML Integrity Standards](http://www.bbc.co.uk/guidelines/futuremedia/technical/xhtml_integrity.shtml)
-* [Fellowship Technologies - Design Patterns and Code Standards](http://developer.fellowshipone.com/patterns/code.php)
-* [ISOBAR CODE STANDARDS & FRONT-END DEVELOPMENT BEST PRACTICES](http://na.isobar.com/standards/)
+*	[XHTML Integrity Standards](http://www.bbc.co.uk/guidelines/futuremedia/technical/xhtml_integrity.shtml)
+*	[Fellowship Technologies - Design Patterns and Code Standards](http://developer.fellowshipone.com/patterns/code.php)
+*	[Isobar Code Standards & Front-End Development Best Practices](http://na.isobar.com/standards/)

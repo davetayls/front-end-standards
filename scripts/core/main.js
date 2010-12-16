@@ -1,7 +1,7 @@
 define('core/tableofcontents',['jquery/jquery.tableofcontents'], function () {
 	return {
 		init: function(){
-			$('#toc').tableOfContents();
+			$('#toc').tableOfContents(document, {startLevel:2});
 		}
 	}
 });
@@ -17,7 +17,7 @@ require(["core/debug","h5f/h5f"], function() {
 		$('pre code').addClass('brush: js');
 		SyntaxHighlighter.config.tagName = 'code';
 		SyntaxHighlighter.all();
-
+		
 	});
 });
 define("core/main", function(){});

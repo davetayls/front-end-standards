@@ -32,13 +32,37 @@ body { }
 }
 	#contents {
 		background: #efefef;
+		height: 100%;
 		margin-left: 210px;
-		padding: 20px;
+		padding: 0 20px;
 		position: fixed;
 		left: 50%;
+		overflow: auto;
 		top: 0px;
 		width: 250px;
 	}
+    #searcharea {
+        padding: 20px 0;
+    }
+	    #toc, #toc ul {
+		    padding-left: 0;
+	    }
+	    #toc li {
+		    list-style: none outside;
+		    padding: 0 0 5px 0;
+	    }
+	    #toc li li {
+		    font-family: tahoma, arial, sans-serif;
+		    font-size: 0.9em;
+	    }
+		    #toc li li a {
+			    font-weight: bold;
+			    color: #333;
+		    }
+			    #toc li li li a {
+				    font-weight: normal;
+				    color: #777;
+			    }
 	#main {
 		width: 600px;
 	}
