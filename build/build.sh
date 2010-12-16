@@ -1,2 +1,2 @@
-cd /cygdrive/d/projects/siteblueprint/build/
+cd /cygdrive/c/projects/front-end-standards/build/
 jake

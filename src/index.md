@@ -306,8 +306,8 @@ We primarily develop new applications in [jQuery](http://jquery.com), though we 
 
 ### General coding principles
 *	99% of code should be housed in external javascript files. They should be included at the END of the BODY tag for maximum page performance.
-*	Don't rely on the user-agent string if you don't have to. Do proper feature detection. (More at Dive Into HTML5: Detection & jQuery.support docs)
-*	Don't use document.write().
+*	Don't rely on the user-agent string if you don't have to. Do proper feature detection. (More at [Dive Into HTML5: Detection](http://diveintohtml5.org/detect.html) & [jQuery.support docs](http://api.jquery.com/jQuery.support/))
+*	Don't use `document.write()`.
 *	All Boolean variables should start with "is". Test for positive conditions
 
 		isValid = (test.value >= 4 && test.success);
@@ -317,7 +317,9 @@ We primarily develop new applications in [jQuery](http://jquery.com), though we 
 *	Constants or configuration variables (like animation durations, etc.) should be at the top of the file.
 *	Strive to create functions which can be generalized, take parameters, and return values. This allows for substantial code reuse and, when combined with includes or external scripts, can reduce the overhead when scripts need to change.
 
-	*	For example, instead of hard coding a pop-window with window size, options, and url, consider creating a function which takes size, url, and options as variables.
+	*	For example, instead of hard coding a pop-window with window size, options, and url, consider creating:
+            
+            function(size, url, options){ ... }.
 	
 *	Comment your code! It helps reduce time spent troubleshooting JavaScript functions.
 *	Don't waste your time with <!-- --> comments surrounding your inline javascript, unless you care about Netscape 4. :)
@@ -453,4 +455,4 @@ Thanks to the following sites for inspiration and reuse.
 
 *	[XHTML Integrity Standards](http://www.bbc.co.uk/guidelines/futuremedia/technical/xhtml_integrity.shtml)
 *	[Fellowship Technologies - Design Patterns and Code Standards](http://developer.fellowshipone.com/patterns/code.php)
-*	[ISOBAR CODE STANDARDS & FRONT-END DEVELOPMENT BEST PRACTICES](http://na.isobar.com/standards/)
+*	[Isobar Code Standards & Front-End Development Best Practices](http://na.isobar.com/standards/)
