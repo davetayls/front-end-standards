@@ -7,3 +7,4 @@ scripts/core/debug.js
 scripts/h5f/h5f.js
 scripts/jquery/jquery.tableofcontents.js
 scripts/jquery/quicksearch/jquery.quicksearch.js
+scripts/jquery/jquery.stickyHeader.js
