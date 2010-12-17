@@ -32,7 +32,6 @@ When putting example links within front end code which will be integrated at a l
 
 		<a href="none">link</a>
 
-
 ### Media
 
 *	Always have the logo as a single img on the page. This will enable it to be picked up easily when the page is shared with social sites.
