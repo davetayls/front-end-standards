@@ -1,6 +1,5 @@
-require(["core/debug","h5f/h5f"], function() {
+require(["core/debug"], function() {
     $(function() {
-	
 		$('pre code').addClass('brush: js');
 		SyntaxHighlighter.config.tagName = 'code';
 		SyntaxHighlighter.all();
