@@ -363,8 +363,8 @@ In general, the use of whitespace should follow longstanding English reading con
 *	[VS Intellisense Comments](http://weblogs.asp.net/bleroy/archive/2007/04/23/the-format-for-javascript-doc-comments.aspx)
 
 
-Accessibility
--------------
+Accessibility TODO
+------------------
 
 *	It's the law!
 *	More site visitors
@@ -373,8 +373,8 @@ Accessibility
 *	Improves your image
 *	It's not just a "disabled issue".
 
-ARIA -Accessible Rich Internet Applications
--------------------------------------------
+ARIA -Accessible Rich Internet Applications TODO
+------------------------------------------------
 
 Perception:
 Widgets aren't percieved like we do as contained items
@@ -399,8 +399,8 @@ A good start is to apply the `role` attribute to particular sections of the page
 	<div id="content" role="main"></div>
 	
 
-Progressive enhancement
------------------------
+Progressive enhancement TODO
+----------------------------
 
 *	Javascript
 
@@ -427,8 +427,8 @@ Integrating common UI code
 	</div>
 
 
-Forms
------
+Forms TODO
+----------
 *	For compound elements (where text is used to label a form element), the `<label>` tag MUST be used to explicitly associate the relevant text label with its form element.
 *	This MUST be done using a 'for' attribute on the label and a pairing 'id' attribute on the element.
 	
@@ -444,8 +444,8 @@ We have different types of forms
 
 Demo: http://the-taylors.org/standards/forms.htm
 
-Validation
-----------
+Validation TODO
+---------------
 Validation
  
 
