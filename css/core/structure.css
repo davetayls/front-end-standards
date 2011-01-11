@@ -26,12 +26,13 @@ body { }
 
 #container {
 	margin: 0 auto;
-	padding: 20px 0;
+	padding: 20px 0 100px;
 	position: relative;
 	width: 960px;
 }
 	.stickyHeader {
 	  background: none repeat scroll 0 0 #CCCCCC;
+	  bottom: 0;
 	  color: #555555;
 	  font-size: 2em;
 	  left: 0;
@@ -39,7 +40,6 @@ body { }
 	  position: fixed;
 	  text-align: center;
 	  text-shadow: 1px 1px 0 #FFFFFF;
-	  top: 0;
 	  width: 100%;
 	  z-index: 100;
 	}
@@ -58,7 +58,10 @@ body { }
 		margin-top: 45px;
         padding: 20px 0;
     }
-	    #toc, #toc ul {
+	    #toc {
+            margin-bottom: 100px;
+        }
+        #toc, #toc ul {
 		    padding-left: 0;
 	    }
 	    #toc li {
@@ -97,10 +100,26 @@ body { }
 
 /* Grade-A Mobile Browsers (Opera Mobile, iPhone Safari, Android Chrome)  
    Consider this: www.cloudfour.com/css-media-query-for-mobile-is-fools-gold/ */
-@media screen and (max-device-width: 480px) {
-  
-  
+@media screen and (max-width: 480px) {
+
   /* Prevent iOS, WinMobile from adjusting font size */
   html { -webkit-text-size-adjust:none; -ms-text-size-adjust:none; } 
+  
+  #container {
+    width: auto;
+  }
+    .stickyHeader  {
+        display: none !important;
+    }
+    #contents   {
+        position: relative;
+        left: 0;
+        margin: 0;
+        width: auto;
+    }
+    #main {
+        padding: 0 10px;
+        width: auto;
+    }
 }
 

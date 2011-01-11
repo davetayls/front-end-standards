@@ -16,7 +16,6 @@ Front-End Code Standards and Best Practices
 	   (/   \\ /\\\
 			// ````
 	 ======((`=======
-	// I am loving ascii art, inspired by looking at Paul Irish
 
 Best Practices
 --------------
@@ -302,8 +301,6 @@ For more on reducing stylesheet code redundancy, and using CSS shorthand in gene
 JavaScript
 ----------
 
-We primarily develop new applications in [jQuery](http://jquery.com), though we have expertise in plain JavaScript as well as all major modern javascript libraries.
-
 ### General coding principles
 *	99% of code should be housed in external javascript files. They should be included at the END of the BODY tag for maximum page performance.
 *	Don't rely on the user-agent string if you don't have to. Do proper feature detection. (More at [Dive Into HTML5: Detection](http://diveintohtml5.org/detect.html) & [jQuery.support docs](http://api.jquery.com/jQuery.support/))
@@ -399,10 +396,12 @@ A good start is to apply the `role` attribute to particular sections of the page
 	<div id="content" role="main"></div>
 	
 
-Progressive enhancement TODO
-----------------------------
+Progressive Enhancement and Feature Detection TODO
+--------------------------------------------------
 
-*	Javascript
+Progressive enhancement is an approach to web development that aims to deliver the best possible experience to the widest possible audience - whether your users are viewing your sites on an iPhone, a high-end desktop system, a Kindle, or hearing them on a screen-reader, their experience should be as fully featured and functional as possible.
+
+*   [Articles on progressive enhancement from the Filament Group](http://www.filamentgroup.com/lab/tag/progressive_enhancement/)
 
 Integrating common UI code
 --------------------------
@@ -456,3 +455,4 @@ Thanks to the following sites for inspiration and reuse.
 *	[XHTML Integrity Standards](http://www.bbc.co.uk/guidelines/futuremedia/technical/xhtml_integrity.shtml)
 *	[Fellowship Technologies - Design Patterns and Code Standards](http://developer.fellowshipone.com/patterns/code.php)
 *	[Isobar Code Standards & Front-End Development Best Practices](http://na.isobar.com/standards/)
+*   [Code Conventions for the JavaScript Programming Language](http://javascript.crockford.com/code.html)
