@@ -159,7 +159,11 @@ Some developers prefer css properties on their own line. Others prefer putting t
 
 ### Pixels vs. Ems
 
-We use the px unit of measurement to define font size, because it offers absolute control over text. We realize that using the em unit for font sizing used to be popular, to accommodate for Internet Explorer 6 not resizing pixel based text. However, all major browsers (including IE7 and IE8) now support text resizing of pixel units and/or full-page zooming. Since IE6 is largely considered deprecated, pixels sizing is preferred. Additionally, unit-less line-height is preferred because it does not inherit a percentage value of its parent element, but instead is based on a multiplier of the font-size.
+We use the em unit of measurement to define `font-size`, because it is the most accessible way to allow text resizing cross browser. We realise that from IE7 you can use zoom but we have decided this isn't quite the same thing. 
+
+However we only use ems for `font-size` and not for `margin` or `padding`. All other units should be in px or % where appropriate.
+
+Additionally, unit-less `line-height` is preferred because it does not inherit a percentage value of its parent element, but instead is based on a multiplier of the `font-size`.
 
 #### Correct
 
@@ -360,15 +364,58 @@ In general, the use of whitespace should follow longstanding English reading con
 *	[VS Intellisense Comments](http://weblogs.asp.net/bleroy/archive/2007/04/23/the-format-for-javascript-doc-comments.aspx)
 
 
-Accessibility TODO
-------------------
+Accessibility
+-------------
 
-*	It's the law!
-*	More site visitors
-*	Better browsing experience
-*	Google likes it
-*	Improves your image
-*	It's not just a "disabled issue".
+We take a lot of care to ensure that our web sites are accessible. Not only is it required by law but more site visitors will enjoy a better browsing experience. You will also find that as a result the site's discoverability will improve which mean it's easier to index by search engines. Google will love you!
+
+*   Take a look at the [pixels vs ems](#pixels_vs_ems) section.
+
+Here is an example of a stylesheet which a visually impaired user can add to a browser to apply styles across websites.
+
+    /*Copyright 2002 One Format Design - 011000 - version 0703*/
+    /*Code:*/
+    body {background: none #FFFFFF !important}
+    body * {background: none #FFFFFF !important}
+    img {background-color: #FFFFFF !important}
+    input {background-color: #DEDEDE !important}
+    option {background-color: #DEDEDE !important}
+    textarea {background-color: #DEDEDE !important}
+    body {color: #00193E !important}
+    body * {color: #00193E !important}
+    font {color: #00193E !important}
+    a:link {color: #0035FA !important}
+    a:link * {color: #0035FA !important}
+    a:visited {color: #0035FA !important}
+    a:visited * {color: #0035FA !important}
+    a:hover {color: #FE660D !important}
+    a:hover * {color: #FE660D !important}
+    a:active {color: #FE660D !important}
+    a:active * {color: #FE660D !important}
+    input {color: #00193E !important}
+    option {color: #00193E !important}
+    textarea {color: #00193E !important}
+    h1,h2,h3,h4,h5,h6 {color: #00193E !important}
+    h1 font,h2 font,h3 font,h4 font,h5 font,h6 font {color: #00193E !important}
+    body {font-family: Arial, Verdana, Helvetica, sans-serif !important}
+    body * {font-family: Arial, Verdana, Helvetica, sans-serif !important}
+    body {font-size: 11pt !important}
+    body * {font-size: 11pt !important}
+    h1 {font-size: 1.50em !important}
+    h2 {font-size: 1.25em !important}
+    h3 {font-size: 1.15em !important}
+    h4,h5,h6 {font-size: 1.0em !important}
+    h1 font {font-size: 1.0em !important}
+    h2 font {font-size: 1.0em !important}
+    h3 font {font-size: 1.0em !important}
+    h4 font,h5 font,h6 font {font-size: 1.0em !important}
+    * {font-style: normal !important}
+    * {line-height: 1.3 !important}
+    * {text-decoration: none !important}
+    input {height: 1.7em !important}
+    option {height: 1.7em !important}
+    textarea {height:       !important}
+
 
 ARIA -Accessible Rich Internet Applications TODO
 ------------------------------------------------
