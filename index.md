@@ -10,12 +10,19 @@ Front-End Code Standards and Best Practices
 	 \  /,      /  >.
 	  \  /,   _/  /.
 	   \_  /_/   /.
-		\__/_   <    TIME TO
-		/<<< \_\_    FLY
+		\__/_   <    
+		/<<< \_\_    
 	   /,)^>>_._ \
 	   (/   \\ /\\\
 			// ````
 	 ======((`=======
+
+
+Revision History
+----------------
+
+The full history of this document can be found here: <https://github.com/davetayls/front-end-standards/commits/gh-pages>
+
 
 Best Practices
 --------------
@@ -74,6 +81,28 @@ Developers are also need to support legacy sites running xhtml doctypes:
 *	Tables shouldn't be used for page layout (duh).
 *	Use microformats where appropriate, specifically hCard and adr.
 *	Always use title-case for headers and titles. Do not use **ALL CAPS** or all **lowercase** titles in markup, instead apply the CSS property `text-transform:uppercase/lowercase`.
+
+#### IDs and Classes
+
+We reduce the use of IDs to core structural elements such as the main header and footer and primay/secondary navigation.
+
+Otherwise we only use IDs on content that should be accessed through a #tag in the url (this includes tabs). We don't use IDs on content based layouts such as 3 column navigation,body and aside containers.
+
+Here is an example illustrating this:
+
+    <body>
+        <header id="mainHeader"></header>
+        <nav id="nav-primary">...</nav>
+        <div class="leftColumn">
+            <nav id="nav-secondary">...</nav>
+        </div>
+        <div class="contentBody">
+            ...
+        </div>
+        <aside class="contentAside">
+        </aside>
+        <footer id="mainFooter"></footer>
+    </body>
 
 #### Lists
 *	Items in list form should always be housed in a UL, OL, or DL, never a set of DIVs or Ps.
@@ -236,19 +265,19 @@ In general, elements in Internet Explorer's Dynamic HTML engine are not responsi
 
 In general, CSS shorthand is preferred because of its terseness, and the ability to later go back and add in values that are already present, such as the case with margin and padding. 
 
-*	Developers should be aware of Top, Right, Bottom, Left, denoting the order in which the sides of an element are defined, in a clock-wise manner. 
+Developers should be aware of Top, Right, Bottom, Left, denoting the order in which the sides of an element are defined, in a clock-wise manner. 
 	
-	#### If bottom is undefined, it inherits its value from top. 
-		
-		.pad { padding: 10px 0; } // equivalent: 10px 0 10px 0
-	
-	#### Likewise, if left is undefined, it inherits its value from right. 
-		
-		.pad { padding: 0 10px 2px; } // equivalent: 0 10px 2px 10px
-		
-	#### If only the top value is defined, all sides inherit from that one declaration.
-		
-		.pad { padding: 10px; } // equivalent: 10px 10px 10px 10px
+*   If bottom is undefined, it inherits its value from top. 
+
+        .pad { padding: 10px 0; } // equivalent: 10px 0 10px 0
+
+*   Likewise, if left is undefined, it inherits its value from right. 
+
+        .pad { padding: 0 10px 2px; } // equivalent: 0 10px 2px 10px
+
+*   If only the top value is defined, all sides inherit from that one declaration.
+
+        .pad { padding: 10px; } // equivalent: 10px 10px 10px 10px
 
 For more on reducing stylesheet code redundancy, and using CSS shorthand in general:
 *	[http://qrayg.com/journal/news/css-background-shorthand](http://qrayg.com/journal/news/css-background-shorthand)
@@ -309,11 +338,6 @@ JavaScript
 *	99% of code should be housed in external javascript files. They should be included at the END of the BODY tag for maximum page performance.
 *	Don't rely on the user-agent string if you don't have to. Do proper feature detection. (More at [Dive Into HTML5: Detection](http://diveintohtml5.org/detect.html) & [jQuery.support docs](http://api.jquery.com/jQuery.support/))
 *	Don't use `document.write()`.
-*	All Boolean variables should start with "is". Test for positive conditions
-
-		isValid = (test.value >= 4 && test.success);
-
-*	Name variables and functions logically: For example, popUpWindowForAd rather than myWindow.
 *	Large blocks of code should be separated by flowerbox comments to indicate chapters of the file.
 *	Constants or configuration variables (like animation durations, etc.) should be at the top of the file.
 *	Strive to create functions which can be generalized, take parameters, and return values. This allows for substantial code reuse and, when combined with includes or external scripts, can reduce the overhead when scripts need to change.
@@ -329,6 +353,15 @@ JavaScript
 *	When specifying any global variable, clearly identify it
 
 		window.globalVar = { ... }
+
+### Naming Conventions
+
+*	All Boolean variables should start with "is". Test for positive conditions
+
+		isValid = (test.value >= 4 && test.success);
+
+*	Name variables and functions logically: For example, popUpWindowForAd rather than myWindow.
+*   Append all variables which are a jQuery object with the `$` symbol (eg `listItems$`).
 
 ### White-space
 
@@ -354,6 +387,17 @@ In general, the use of whitespace should follow longstanding English reading con
 	for(var i=0,j=arr.length;i<j;i++){
 		// Do something.
 	}
+
+### JsLint
+
+We use [JsLint](http://www.jslint.com) to validate our JavaScript. We recognise that it can be a little strict and so in the defense of sanity we don't mind developers using the `/*jslint*/` comment block to relax the validation process. 
+
+However the following should not be used:
+
+*   cap
+*   nomen
+*   newcap
+*   on
 
 
 ### Intellisense and Documenting

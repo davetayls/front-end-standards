@@ -15,6 +15,5 @@ require(["core/debug"], function() {
 				headlineSelector: '#main>h2'
 			});
 		});
-
 	});
 });

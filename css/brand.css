@@ -69,17 +69,6 @@ img { -ms-interpolation-mode: bicubic; }
 p           { margin-bottom: 5px; }
 
 pre { 
-    /*
-	background-color:#333333;
-	padding: 15px; 
-	border-left:5px solid #777777;
-	color:#CCCCCC;
-	display: block;
-	font-size:1.1em;
-	line-height: 1.1em;
-	margin:10px 0;
-	padding:10px;
-    */
 	/* www.pathf.com/blogs/2008/05/formatting-quoted-code-in-blog-posts-css21-white-space-pre-wrap/ */
 	white-space: pre; /* CSS2 */
 	white-space: pre-wrap; /* CSS 2.1 */
@@ -91,8 +80,11 @@ code {
 	padding: 0 5px; 
 	color:#CCCCCC;
 }
+pre code { 
+}
+
 strong      {}
-small { font-size:85%; }
+small { font-size:70%; }
 
 /* normalize monospace sizing 
  * en.wikipedia.org/wiki/MediaWiki_talk:Common.css/Archive_11#Teletype_style_fix_for_Chrome

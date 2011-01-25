@@ -30,9 +30,15 @@
 		<div id="searcharea">
 			<label for="search" title="Access Key: 4">Search</label>
 			<input accesskey="4" title="Access Key: 4" type="text" id="search" />
+            <div><small>(you can use accesskey 4)</small></div>
 		</div> 
 		<ul id="toc"></ul> 
 	</div>
+    <script id="revHistoryTemplate" type="text/x-jquery-tmpl">
+        <li>
+            <a href="${author.uri}"><img src="${thumbnail.url}" alt="" />${author.name}</a> ${html content.content}
+        </li>
+    </script>
     <div id="main">
 		{{ content }}	
     </div>
