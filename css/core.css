@@ -10,5 +10,6 @@ layout: nil
 @import url("{{ site.siteroot }}/css/core/structure.css");
 @import url("{{ site.siteroot }}/css/core/reusable.css");
 @import url("{{ site.siteroot }}/css/core/layouts.css");
+@import url("{{ site.siteroot }}/css/core/forms.css");
 /*@import url("{{ site.siteroot }}/css/core/print.css");*/
 

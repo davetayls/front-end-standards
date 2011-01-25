@@ -46,7 +46,6 @@
 					t = isBody ? this$.position().top - scrollTop : this$.position().top,
 					h = this$.outerHeight(),
 					header$ = this$.find(settings.headlineSelector);
-  				console.log(t);
 				if (t < 0) {
   					this$.addClass(settings.stickyClass);
 					stickyHeader$.html(this$.html());

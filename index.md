@@ -532,7 +532,7 @@ We have different types of forms
 *	form-stack
 *	form-margin
 
-Demo: http://the-taylors.org/standards/forms.htm
+As this section contains a lot of code samples it has been split in to a [separate page](forms/).
 
 Validation TODO
 ---------------
