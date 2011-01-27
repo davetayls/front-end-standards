@@ -325,8 +325,7 @@ layout: master
                                     </li>
                                 </ul>
                             </div>
-
-
+                            
                             <h3>Special</h3>
                             <h4>Date Fields</h4>
                             <pre><code>
@@ -371,5 +370,56 @@ layout: master
                             </div>
                             
                         </fieldset>
+
+
+                        <h2>Validation Examples</h2>
+                        <h3>Error Summary</h3>
+                        <pre><code>
+                        &lt;div class=&quot;form-errorSummary&quot; style=&quot;display:none;&quot;&gt;
+                            &lt;h4&gt;error header&lt;/h4&gt;
+                            &lt;ul&gt;
+                                &lt;li&gt;&lt;a href=&quot;#error1&quot;&gt;errordetails&lt;/a&gt;&lt;/li&gt;
+                                &lt;li&gt;&lt;a href=&quot;#error2&quot;&gt;errordetails&lt;/a&gt;&lt;/li&gt;
+                                &lt;li&gt;&lt;a href=&quot;#error3&quot;&gt;errordetails&lt;/a&gt;&lt;/li&gt;
+                                &lt;li&gt;&lt;a href=&quot;#error4&quot;&gt;errordetails&lt;/a&gt;&lt;/li&gt;
+                                &lt;li&gt;&lt;a href=&quot;#error5&quot;&gt;errordetails&lt;/a&gt;&lt;/li&gt;
+                            &lt;/ul&gt;
+                        &lt;/div&gt;
+                        </code></pre>
+                        <div class="form-errorSummary">
+                            <h4>error header</h4>
+                            <ul>
+                                <li><a href="#error1">errordetails</a></li>
+                                <li><a href="#error2">errordetails</a></li>
+                                <li><a href="#error3">errordetails</a></li>
+                                <li><a href="#error4">errordetails</a></li>
+                                <li><a href="#error5">errordetails</a></li>
+                            </ul>
+                        </div>
+                        <h3>Errors on field-item</h3>
+                        <ul>
+                            <li>Add <code>field-itemTerror</code> to <code>field-item</code></li>
+                            <li>Add <code>error-num</code></li>
+                            <li>Add <code>label-error-msg</code></li>
+                            <li>input id should correspond to href # in error summary</li>
+                        </ul>
+                        <pre><code>
+                        &lt;div class=&quot;field-item field-itemTerror&quot;&gt;
+                            &lt;span class=&quot;error-num&quot;&gt;
+                                &lt;span class=&quot;visuallyhidden&quot;&gt;Error: &lt;/span&gt;1
+                            &lt;/span&gt;
+                            &lt;label class=&quot;label-text&quot;&gt;Email&lt;/label&gt;
+                            &lt;input type=&quot;text&quot; /&gt;
+                            &lt;span class=&quot;label-error-msg&quot;&gt;there is a validation error&lt;/span&gt;
+                        &lt;/div&gt;
+                        </code></pre>
+                        <div class="field-item field-itemTerror">
+                            <span class="error-num">
+                                <span class="visuallyhidden">Error: </span>1
+                            </span>
+                            <label class="label-text">Email</label>
+                            <input type="text" />
+                            <span class="label-error-msg">there is a validation error</span>
+                        </div>
                         
                     </div><!-- /form -->
