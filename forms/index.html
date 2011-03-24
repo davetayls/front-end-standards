@@ -421,5 +421,49 @@ layout: master
                             <input type="text" />
                             <span class="label-error-msg">there is a validation error</span>
                         </div>
+                        <h3>Errors on field-group</h3>
+                        <pre><code>
+                        &lt;div class=&quot;field-group field-groupTerror cp-dateField&quot;&gt;
+                            &lt;span class=&quot;field-group-header&quot;&gt;Date:&lt;/span&gt;
+                            &lt;div class=&quot;field-item&quot;&gt;
+                                &lt;label class=&quot;label-text&quot;&gt;Day&lt;/label&gt;
+                                &lt;input type=&quot;text&quot; name=&quot;day&quot; /&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&quot;field-item field-itemTerror&quot;&gt;
+                                &lt;label class=&quot;label-text&quot;&gt;Month&lt;/label&gt;
+                                &lt;select name=&quot;month&quot;&gt;
+                                    &lt;option&gt;Jan&lt;/option&gt;
+                                &lt;/select&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&quot;field-item&quot;&gt;
+                                &lt;label class=&quot;label-text&quot;&gt;Year&lt;/label&gt;
+                                &lt;select name=&quot;year&quot;&gt;
+                                    &lt;option&gt;2010&lt;/option&gt;
+                                &lt;/select&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&quot;field-group-error-msg&quot;&gt;there is a validation error&lt;/div&gt;
+                        &lt;/div&gt;
+                        </code></pre>
+                        <div class="field-group field-groupTerror cp-dateField">
+                            <span class="field-group-header">Date:</span>
+                            <div class="field-item">
+                                <label class="label-text">Day</label>
+                                <input type="text" name="day" />
+                            </div>
+                            <div class="field-item field-itemTerror">
+                                <label class="label-text">Month</label>
+                                <select name="month">
+                                    <option>Jan</option>
+                                </select>
+                            </div>
+                            <div class="field-item">
+                                <label class="label-text">Year</label>
+                                <select name="year">
+                                    <option>2010</option>
+                                </select>
+                            </div>
+                            <div class="field-group-error-msg">there is a validation error</div>
+                        </div>
+                        
                         
                     </div><!-- /form -->

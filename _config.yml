@@ -1,6 +1,6 @@
 auto: true
 lsi: false
 permalink: /blog/:year/:month/:day/:title
-siteroot: /front-end-standards
+xsiteroot: /front-end-standards
 exclude:
 - startjekyll.bat
