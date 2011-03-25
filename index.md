@@ -520,7 +520,7 @@ We have different types of forms
 *	form-stack
 *	form-margin
 
-As this section contains a lot of code samples it has been split in to a [separate page](forms/).
+As this section contains a lot of code samples it has been split in to a [separate page](forms/index.html).
 
 Validation TODO
 ---------------

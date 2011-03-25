@@ -1,15 +1,14 @@
 ---
 layout: nil
 ---
-@import url("{{ site.siteroot }}/css/brand/reset.css");
+@import url("brand/reset.css");
 
 /* lib files */
-@import url("{{ site.siteroot }}/scripts/syntaxhighlighter/styles/shCoreMidnight.css");
+@import url("../scripts/syntaxhighlighter/styles/shCoreMidnight.css");
 
-@import url("{{ site.siteroot }}/css/brand.css");
-@import url("{{ site.siteroot }}/css/core/structure.css");
-@import url("{{ site.siteroot }}/css/core/reusable.css");
-@import url("{{ site.siteroot }}/css/core/layouts.css");
-@import url("{{ site.siteroot }}/css/core/forms.css");
-/*@import url("{{ site.siteroot }}/css/core/print.css");*/
+@import url("brand.css");
+@import url("core/structure.css");
+@import url("core/reusable.css");
+@import url("core/layouts.css");
+@import url("core/forms.css");
 

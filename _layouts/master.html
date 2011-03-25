@@ -5,17 +5,15 @@
   <!--[if IE]><![endif]-->
 
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>{{ page.title }} - Dave Taylor (@davetayls) Front-End Web Developer</title>
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <title>{{ page.title }}</title>
+  <meta name="description" content="Front-End Standards, Best Practices and Structures">
+  <meta name="author" content="Dave Taylor http://the-taylors.org">
   <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-  <link rel="stylesheet" href="{{ site.siteroot }}/css/core.css">
-  <link rel="stylesheet" media="handheld" href="{{ site.siteroot }}/css/handheld.css">
+  <link rel="stylesheet" href="{{ page.relativePath }}css/core.css">
+  <link rel="stylesheet" media="handheld" href="{{ page.relativePath }}css/handheld.css">
   
-  <script src="{{ site.siteroot }}/scripts/modernizr-1.5.min.js"></script>
+  <script src="{{ page.relativePath }}scripts/modernizr-1.5.min.js"></script>
 
 </head>
 <!--[if lt IE 7 ]> <body class="ie6"> <![endif]-->
@@ -41,62 +39,26 @@
     </script>
     <div id="main">
 		{{ content }}	
-
-        <h2>Comments</h2>
-        <div id="disqus_thread"></div>
-        <script type="text/javascript">
-            var disqus_identifier = '{{ page.id }}';
-            //var disqus_developer = 1;
-            var disqus_url = 'http://the-taylors.org{{ page.url }}';
-            var disqus_title = '{{ page.title }}';
-            (function(){
-                var dsq = document.createElement('script');
-                dsq.type = 'text/javascript';
-                dsq.async = true;
-                dsq.src = 'http://davetayls.disqus.com/embed.js';
-                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-            })();
-        </script>
-        <noscript>
-            Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=davetayls">comments powered by Disqus.</a>
-        </noscript>
-        <p class="cp-disclaimerText">
-            <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
-        </p>
     </div>
     
   </div> <!-- end of #container -->
 
-  <script type="text/javascript" src="{{ site.siteroot }}/scripts/syntaxhighlighter/scripts/shCore.js"></script>
-  <script type="text/javascript" src="{{ site.siteroot }}/scripts/syntaxhighlighter/scripts/shBrushJScript.js"></script>
-  <script type="text/javascript" src="{{ site.siteroot }}/scripts/syntaxhighlighter/scripts/shBrushCss.js"></script>
-  <script data-main="core/main" type="text/javascript" src="{{ site.siteroot }}/scripts/require-jquery-1.4.3.js"></script>
-
-	<!--[if lt IE 7 ]>
-	<script src="{{ site.siteroot }}/lib/dd_belatedpng.js"></script>
-	<script>DD_belatedPNG.fix('.png_bg, img');</script>
-	<![endif]-->
+  <script type="text/javascript" src="{{ page.relativePath }}scripts/syntaxhighlighter/scripts/shCore.js"></script>
+  <script type="text/javascript" src="{{ page.relativePath }}scripts/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+  <script type="text/javascript" src="{{ page.relativePath }}scripts/syntaxhighlighter/scripts/shBrushCss.js"></script>
+  <script data-main="core/main" type="text/javascript" src="{{ page.relativePath }}scripts/require-jquery-1.4.3.js"></script>
 
     <script type="text/javascript">
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-4421586-2']);
       _gaq.push(['_trackPageview']);
-    
+
       (function() {
         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
     </script>
-    <script type="text/javascript">
-        var disqus_shortname = 'davetayls';
-        (function () {
-            var s = document.createElement('script'); s.async = true;
-            s.src = 'http://disqus.com/forums/davetayls/count.js';
-            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-        }());
-    </script>
-
 
   </body>
 </html>
