@@ -248,3 +248,6 @@
 	.field-itemTerror textarea {
 		color: #990000;
 	}
+    .label-error-msg {
+        display: block;
+    }

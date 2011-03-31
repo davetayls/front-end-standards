@@ -416,62 +416,69 @@ relativePath: ../
     <pre><code>
     &lt;div class=&quot;field-item field-itemTerror&quot;&gt;
         &lt;span class=&quot;error-num&quot;&gt;
-            &lt;span class=&quot;visuallyhidden&quot;&gt;Error: &lt;/span&gt;1
+            &lt;span&gt;Error: &lt;/span&gt;1
         &lt;/span&gt;
         &lt;label class=&quot;label-text&quot;&gt;Email&lt;/label&gt;
-        &lt;input type=&quot;text&quot; /&gt;
-        &lt;span class=&quot;label-error-msg&quot;&gt;there is a validation error&lt;/span&gt;
+        &lt;input id=&quot;fielditemerrorinput&quot; type=&quot;text&quot; /&gt;
+        &lt;label for=&quot;fielditemerrorinput&quot; class=&quot;label-error-msg&quot;&gt;there is a validation error&lt;/label&gt;
+        &lt;div class=&quot;label-detail&quot;&gt;field information&lt;/div&gt;
     &lt;/div&gt;
     </code></pre>
     <div class="field-item field-itemTerror">
         <span class="error-num">
-            <span class="visuallyhidden">Error: </span>1
+            <span>Error: </span>1
         </span>
         <label class="label-text">Email</label>
-        <input type="text" />
-        <span class="label-error-msg">there is a validation error</span>
+        <input id="fielditemerrorinput" type="text" />
+        <label for="fielditemerrorinput" class="label-error-msg">there is a validation error</label>
+        <div class="label-detail">field information</div>
     </div>
     <h3>Errors on field-group</h3>
-    <pre><code>
-    &lt;div class=&quot;field-group field-groupTerror cp-dateField&quot;&gt;
-        &lt;span class=&quot;field-group-header&quot;&gt;Date:&lt;/span&gt;
+     <ul>
+        <li>You should hightlight the first input using a <code>label</code></li>
+    </ul>
+   <pre><code>
+   &lt;div class=&quot;field-group field-groupTerror cp-dateField&quot;&gt;
+        &lt;label for=&quot;fieldgrouperror-day&quot; class=&quot;field-group-header&quot;&gt;Date:&lt;/label&gt;
         &lt;div class=&quot;field-item&quot;&gt;
-            &lt;label class=&quot;label-text&quot;&gt;Day&lt;/label&gt;
-            &lt;input type=&quot;text&quot; name=&quot;day&quot; /&gt;
+            &lt;label for=&quot;fieldgrouperror-day&quot; class=&quot;label-text&quot;&gt;Day&lt;/label&gt;
+            &lt;input id=&quot;fieldgrouperror-day&quot; type=&quot;text&quot; name=&quot;day&quot; /&gt;
         &lt;/div&gt;
         &lt;div class=&quot;field-item field-itemTerror&quot;&gt;
-            &lt;label class=&quot;label-text&quot;&gt;Month&lt;/label&gt;
-            &lt;select name=&quot;month&quot;&gt;
+            &lt;label for=&quot;fieldgrouperror-month&quot; class=&quot;label-text&quot;&gt;Month&lt;/label&gt;
+            &lt;select id=&quot;fieldgrouperror-month&quot; name=&quot;month&quot;&gt;
                 &lt;option&gt;Jan&lt;/option&gt;
             &lt;/select&gt;
         &lt;/div&gt;
         &lt;div class=&quot;field-item&quot;&gt;
-            &lt;label class=&quot;label-text&quot;&gt;Year&lt;/label&gt;
-            &lt;select name=&quot;year&quot;&gt;
+            &lt;label for=&quot;fieldgrouperror-year&quot; class=&quot;label-text&quot;&gt;Year&lt;/label&gt;
+            &lt;select id=&quot;fieldgrouperror-year&quot; name=&quot;year&quot;&gt;
                 &lt;option&gt;2010&lt;/option&gt;
             &lt;/select&gt;
         &lt;/div&gt;
+        &lt;label for=&quot;fieldgrouperror-day&quot; class=&quot;label-error-msg&quot;&gt;you have entered the wrong day&lt;/label&gt;
         &lt;div class=&quot;label-error-msg&quot;&gt;there is a validation error&lt;/div&gt;
-    &lt;/div&gt;
+    &lt;/div&gt;    
     </code></pre>
     <div class="field-group field-groupTerror cp-dateField">
-        <span class="field-group-header">Date:</span>
+        <label for="fieldgrouperror-day" class="field-group-header">Date:</label>
         <div class="field-item">
-            <label class="label-text">Day</label>
-            <input type="text" name="day" />
+            <label for="fieldgrouperror-day" class="label-text">Day</label>
+            <input id="fieldgrouperror-day" type="text" name="day" />
         </div>
         <div class="field-item field-itemTerror">
-            <label class="label-text">Month</label>
-            <select name="month">
+            <label for="fieldgrouperror-month" class="label-text">Month</label>
+            <select id="fieldgrouperror-month" name="month">
                 <option>Jan</option>
             </select>
         </div>
         <div class="field-item">
-            <label class="label-text">Year</label>
-            <select name="year">
+            <label for="fieldgrouperror-year" class="label-text">Year</label>
+            <select id="fieldgrouperror-year" name="year">
                 <option>2010</option>
             </select>
         </div>
+        <label for="fieldgrouperror-day" class="label-error-msg">you have entered the wrong day</label>
         <div class="label-error-msg">there is a validation error</div>
     </div>
     
