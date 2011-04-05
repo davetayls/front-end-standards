@@ -1,21 +1,23 @@
+$('pre>code').each(function(){
+    var this$ = $(this);
+    this$.parent()
+        .addClass('brush: js')
+        .text(this$.text());
+});
+SyntaxHighlighter.all();
+
+require(['core/tableofcontents', 'jquery/quicksearch/jquery.quicksearch'], function(toc){
+    toc.init();
+    $('#search').quicksearch('#toc li');
+});
+require(['jquery/jquery.stickyHeader'], function(toc){
+    $('body').stickyHeader({
+        headlineSelector: '#main>h2'
+    });
+});
+
 require(["core/debug"], function() {
     $(function() {
-		$('pre code').addClass('brush: js');
-		SyntaxHighlighter.config.tagName = 'code';
-		SyntaxHighlighter.all();
-		
-		require(['core/tableofcontents'], function(toc){
-			toc.init();
-		});
-		require(['jquery/quicksearch/jquery.quicksearch'], function(toc){
-			$('#search').quicksearch('#toc li');
-		});
-		require(['jquery/jquery.stickyHeader'], function(toc){
-			$('body').stickyHeader({
-				headlineSelector: '#main>h2'
-			});
-		});
-        
         // forms
         $("#showErrors").click(function(){
             $(".field-item")

@@ -4,7 +4,6 @@
   <meta charset="utf-8">
   <!--[if IE]><![endif]-->
 
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>{{ page.title }}</title>
   <meta name="description" content="Front-End Standards, Best Practices and Structures">
   <meta name="author" content="Dave Taylor http://the-taylors.org">
@@ -30,16 +29,11 @@
 			<input accesskey="4" title="Access Key: 4" type="text" id="search" />
             <div><small>(you can use accesskey 4)</small></div>
 		</div> 
-		<ul id="toc"></ul> 
+		<div id="toc"></div> 
 	</div>
-    <script id="revHistoryTemplate" type="text/x-jquery-tmpl">
-        <li>
-            <a href="${author.uri}"><img src="${thumbnail.url}" alt="" />${author.name}</a> ${html content.content}
-        </li>
-    </script>
     <div id="main">
 		{{ content }}	
-    </div>
+    </div><!-- /#main -->
     
   </div> <!-- end of #container -->
 

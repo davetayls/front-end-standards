@@ -3,51 +3,91 @@ title: Front-End Standards
 layout: master
 ---
 
-Front-End Code Standards and Best Practices
-===========================================
+Front-End Code Standards
+========================
+
+These standards are separated in to requirements which should be testable and guides to encourage further improvements and help with the requirements.
 
 Revision History
 ----------------
 
-The full history of this document can be found here: <https://github.com/davetayls/front-end-standards/commits/gh-pages>
+05/04/2011
+: Split layout in to requirements and guides
+    
 
 
-Best Practices
---------------
+Code Structure
+---------------
 
-### Pillars of Front-end Development
+### Requirements
 
-*	Separation of presentation, content, and behavior.
-*	[Markup should be well-formed, semantically correct](http://www.bbc.co.uk/guidelines/futuremedia/technical/semantic_markup.shtml) and [generally valid](#validation).
-*	[Javascript should progressively enhance](http://icant.co.uk/articles/pragmatic-progressive-enhancement/) the experience
+1.  Separation of presentation, content, and behavior.
+    
+    *   No css in style attributes in basic HTML output 
 
-### Links
-When putting example links within front end code which will be integrated at a later date use href="none" instead of href="#". These will then show up when we crawl for broken links.
+3.	[Javascript should progressively enhance](http://icant.co.uk/articles/pragmatic-progressive-enhancement/) the experience
+4.  Links
+    
+    *   When putting example links within front end code which will be integrated at a later date use `href="none"` instead of `href="#"`. These will then show up when we crawl for broken links.
 
-		<a href="none">link</a>
+            <a href="none">link</a>
 
+5.  Media
 
-### Media
+    *	Always have the logo as a single img on the page. This will enable it to be picked up easily when the page is shared with social sites.
+    *	Put all media including images which will end up being added by the CMS in to the /cms-content folder within the root of the site
 
-*	Always have the logo as a single img on the page. This will enable it to be picked up easily when the page is shared with social sites.
-*	Put all media including images which will end up being added by the CMS in to the /cms-content folder within the root of the site
+6.  Indentation
 
-### Indentation
-For all code languages, we require indentation to be done via soft tabs (using the space character). Hitting Tab in your text editor shall be equivalent to **four spaces**
+    *   We require indentation to be done via **soft tabs** (using the space character). Hitting Tab in your text editor shall be equivalent to **four spaces**
 
 Markup
 ------
 
-HTML5 is a new version of HTML and XHTML. The [HTML5 draft specification](http://dev.w3.org/html5/spec/Overview.html) defines a single language that can be written in HTML and XML. It attempts to solve issues found in previous iterations of HTML and addresses the needs of Web Applications, an area previously not adequately covered by HTML. ([source](http://html5.org/))
+### Requirements {#markup-requirements}
 
-### Doctype
+1.  New projects should be coded using the HTML5 doctype
+
+        <!DOCTYPE html>
+
+2.  All markup should validate [with a few exceptions](#markup_validation_exceptions)
+3.  All markup should work as expected without [CSS](#css) and [JavaScript](#javascript)
+4.	Markup should be well-formed and [semantically correct](#semantics)
+5.  A set of skip navigation links should be included near the beginning of the page
+
+#### Semantics
+
+##### General
+*	Tables shouldn't be used for page layout (duh).
+
+##### Navigation and Lists
+*   All navigation should be marked up using lists
+*	Items in list form should always be housed in a UL, OL, or DL, never a set of DIVs or Ps.
+*	`<ul>` and `<ol>` type lists MUST have at least one `<li>` item.
+*	All lists SHOULD be preceded by a header that describes the content of the list. [See example](#lists-header).
+
+##### Forms
+*	Use `label` fields to label each form field
+    
+    *   the `for` attribute should associate itself with the input field, so users can click the labels.
+
+#### Markup Validation Exceptions
+
+*   _allowed_ : target attribute on `<a>` tags
+
+        <a href="http://www.google.com" target="_blank">External Link</a>
+
+### Guides {#markup-guides}
+
+HTML5 is a new version of HTML and XHTML. The [HTML5 draft specification](http://dev.w3.org/html5/spec/Overview.html) defines a single language that can be written in HTML and XML. It attempts to solve issues found in previous iterations of HTML and addresses the needs of Web Applications, an area previously not adequately covered by HTML. ([source](http://html5.org/)). 
+
+Developers are also need to support legacy sites running xhtml doctypes:
+
 
 #### HTML 5
 A nice aspect of HTML5 is that it streamlines the amount of code that is required. Meaningless attributes have been dropped, and the DOCTYPE declaration has been simplified significantly. Additionally, there is no need to use CDATA to escape inline JavaScript, formerly a requirement to meet XML strictness in XHTML.
 
 	<!DOCTYPE html>
-
-Developers are also need to support legacy sites running xhtml doctypes:
 
 #### XHTML 1.0 Strict Doctype
 
@@ -60,13 +100,11 @@ Developers are also need to support legacy sites running xhtml doctypes:
 	"http://w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	
 
-### Coding Practices
+#### Coding Practices
 
 *	Make use of DL (definition lists) and BLOCKQUOTE, when appropriate.
-*	Use label fields to label each form field, the for attribute should associate itself with the input field, so users can click the labels. cursor:pointer; on the label is wise, as well. note 1 note 2
 *	Do not use the size attribute on your input fields. The size attribute is relative to the font-size of the text inside the input. Instead use css width.
 *	Place an html comment on some closing div tags to indicate what element you're closing. It will help when there is lots of nesting and indentation.
-*	Tables shouldn't be used for page layout (duh).
 *	Use microformats where appropriate, specifically hCard and adr.
 *	Always use title-case for headers and titles. Do not use **ALL CAPS** or all **lowercase** titles in markup, instead apply the CSS property `text-transform:uppercase/lowercase`.
 
@@ -95,7 +133,7 @@ Here is an example illustrating this:
 #### Lists
 *	Items in list form should always be housed in a UL, OL, or DL, never a set of DIVs or Ps.
 *	`<ul>` and `<ol>` type lists MUST have at least one `<li>` item.
-*	All lists SHOULD be preceded by a header - `<h*>description</h*>` - that describes the content of the list as suggested in WCAG 2.0. This helps users with assistive technologies to understand the semantics of the list.
+*	{#lists-header}All lists SHOULD be preceded by a header - `<h*>description</h*>` - that describes the content of the list as suggested in WCAG 2.0. This helps users with assistive technologies to understand the semantics of the list.
 
 	*	[http://www.w3.org/TR/2008/WD-WCAG20-TECHS-20080430/H42.html#H42-ex1](http://www.w3.org/TR/2008/WD-WCAG20-TECHS-20080430/H42.html#H42-ex1)
 	*	[http://www.w3.org/TR/2008/WD-WCAG20-TECHS-20080430/H69.html#H69-ex2](http://www.w3.org/TR/2008/WD-WCAG20-TECHS-20080430/H69.html#H69-ex2)
@@ -123,7 +161,40 @@ Here is an example illustrating this:
 CSS
 ---
 
-### Specificity
+### Requirements {#css-requirements}
+
+1.  No use of inline styles using the `style` attribute. [more](#inline_styles)
+2.  CSS Validates with a [few exceptions](#css_validation)
+3.  font-size should use ems. [more](#pixels_vs_ems)
+4.  line-height values should be unitless ie: `line-height: 1.5`. [more](#pixels_vs_ems)
+5.	Add css through external files.
+6.	Css links should always be in the `<head>` of the document and before any `<script>` declarations.
+7.	Use the `<link />` tag to include, never the @import.
+
+        <link rel="stylesheet" type="text/css" href="myStylesheet.css" />
+
+8.	Don't use inline styling
+
+		<p style="font-size: 12px; color: #FFFFFF">This is poor form, I say</p>
+
+9.	Use a reset css file ([like Eric Meyers reset](http://meyerweb.com/eric/thoughts/2007/05/01/reset-reloaded/)) to zero our cross-browser weirdness.
+10.	Elements that occur only once inside a document should use IDs, otherwise, use classes.
+
+
+### Guides {#css-guides}
+
+#### General Principles
+
+*	Use a font-normalization file like YUI fonts.css
+*	Understand cascading and selector specificity so you can write very terse and effective code.
+*	Write selectors that are optimized for speed. Aka:
+	*	where possible, avoid expensive css selectors. 
+	*	Avoid the *	wildcard selector. 
+	*	Don't qualify ID selectors (e.g. div#myid) or class selectors (e.g. table.results) unless its neccessary for readability or for efficiency. 
+  
+  More on [writing efficient css on the MDC](https://developer.mozilla.org/en/Writing_Efficient_CSS).
+
+#### Specificity
 
 CSS [Specificity](http://www.w3.org/TR/CSS2/cascade.html#specificity) is a standard which is surprisingly misunderstood and missused.
 
@@ -132,7 +203,7 @@ In this example, the color of the P element would be green. The declaration in t
 	// simply put calculate using the concatenated 
 	// number from style|id|class|element
 	// eg: 0|1|0|0 = 100, 0|1|0|12 = 1012
-	*	            {}  /*	a=0 b=0 c=0 d=0 -> specificity = 0,0,0,0 */
+	*	          {}  /*	a=0 b=0 c=0 d=0 -> specificity = 0,0,0,0 */
 	li            {}  /*	a=0 b=0 c=0 d=1 -> specificity = 0,0,0,1 */
 	li:first-line {}  /*	a=0 b=0 c=0 d=2 -> specificity = 0,0,0,2 */
 	ul li         {}  /*	a=0 b=0 c=0 d=2 -> specificity = 0,0,0,2 */
@@ -155,26 +226,34 @@ In this example, the color of the P element would be green. The declaration in t
 *	We structure and separate code in to semantically named CSS files. 
 *	Try to use the least specific css selector needed to achieve a style
 
-#### Useful articles
+##### Useful articles
 *	[Specificity Spec](http://www.w3.org/TR/CSS2/cascade.html#specificity)
 *	[CSS Specificity And Inheritance](http://www.smashingmagazine.com/2010/04/07/css-specificity-and-inheritance/)
 *	[CSS: Specificity Wars](http://www.stuffandnonsense.co.uk/archives/css_specificity_wars.html)
 
-### Inline Styles
+#### Inline Styles
 
 We strive to maintain proper separation of content and design, and therefore highly discourage the use of inline style="..." attributes. This not only makes maintenance a nightmare, but inextricably ties the presentation to the data it represents.
 
 Note: An exception to this rule is style="display:none" for revealing hidden elements via JavaScript.
 
-### CSS Validation
+#### CSS Validation
 
-It's likely not a wise use of time to validate your CSS with the W3C validator, though it may identify a few problems.
+We validate our CSS with the W3C validator. Because of the nature of cross browser CSS there are a few exceptions which we allow to pass.
 
-### CSS Formatting
+*   We allow the use of the star hack to target ie6/ie7
+    
+        .className { *display: block; }
+
+*   We allow the use of the zoom property (with or without the * hack) with a value of 1
+    
+        .className { zoom: 1; }
+
+#### CSS Formatting
 
 Some developers prefer css properties on their own line. Others prefer putting them next to eachother and doing one rule per line. Both are good approaches; at the outset of development, the project team should decide which they want to do.
 
-### Pixels vs. Ems
+#### Pixels vs. Ems
 
 We use the em unit of measurement to define `font-size`, because it is the most accessible way to allow text resizing cross browser. We realise that from IE7 you can use zoom but we have decided this isn't quite the same thing. 
 
@@ -182,33 +261,34 @@ However we only use ems for `font-size` and not for `margin` or `padding`. All o
 
 Additionally, unit-less `line-height` is preferred because it does not inherit a percentage value of its parent element, but instead is based on a multiplier of the `font-size`.
 
-#### Correct
-
-	#selector {
-		font-size: 13px;
-		line-height: 1.5;  /*	 13 *	1.5 = 19.5 ~ Rounds to 20px. */
-	}
-
-#### Incorrect
+##### Correct
 
 	/*	 Equivalent to 13px font-size and 20px line-height, 
 		but only if the browser default text size is 16px. */
 	#selector {
 		font-size: 0.813em;
+		line-height: 1.5;  /*	 13 *	1.5 = 19.5 ~ Rounds to 20px. */
+	}
+
+##### Incorrect
+
+	#selector {
+		font-size: 13px;
 		line-height: 1.25em;
 	}
 
-### Internet Explorer Bugs
+#### Internet Explorer Bugs
 
 Inevitably, when all other browsers appear to be working correctly, any and all versions of Internet Explorer will introduce a few nonsensical bugs, delaying time to deployment. While we encourage troubleshooting and building code that will work in all browsers without special modifications, sometimes it is necessary to use conditional if IE comments for CSS hooks we can use in our stylesheets. Read more on paulirish.com
 
-#### Fixing IE
+##### Fixing IE
 
-	<!--[if lt IE 7 ]> <body class="ie6"> <![endif]-->
-	<!--[if IE 7 ]>    <body class="ie7"> <![endif]-->
-	<!--[if IE 8 ]>    <body class="ie8"> <![endif]-->
-	<!--[if IE 9 ]>    <body class="ie9"> <![endif]-->
-	<!--[if !IE]><!--> <body> <!--<![endif]-->
+    <!doctype html>
+    <!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->
+    <!--[if IE 7 ]>    <html class="no-js ie7" lang="en"> <![endif]-->
+    <!--[if IE 8 ]>    <html class="no-js ie8" lang="en"> <![endif]-->
+    <!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+    ...
 	.box { float: left; margin-left: 20px; }
 	.ie6 .box { margin-left: 10px; }
 
@@ -231,7 +311,7 @@ Stoyan Stefanov writes about how these [conditional comments can block downloads
 			<![endif]-->
 		</head>
 
-#### ie HasLayout
+##### ie HasLayout
 
 There are several bugs in Internet Explorer that can be worked around by forcing "a layout" (an IE internal data structure) on an element (like, [dimensional bug fixes](http://www.communitymx.com/content/article.cfm?page=2&cid=C37E0) and [Holly hack](http://www.communitymx.com/content/article.cfm?page=2&cid=C37E0)). 
 
@@ -249,7 +329,7 @@ In general, elements in Internet Explorer's Dynamic HTML engine are not responsi
 *	[MSDN HasLayout Overview](http://msdn.microsoft.com/en-us/library/bb250481.aspx)
 *	[http://www.satzansatz.de/cssd/onhavinglayout.html](http://www.satzansatz.de/cssd/onhavinglayout.html)
 
-### Shorthand
+#### Shorthand
 
 In general, CSS shorthand is preferred because of its terseness, and the ability to later go back and add in values that are already present, such as the case with margin and padding. 
 
@@ -272,31 +352,7 @@ For more on reducing stylesheet code redundancy, and using CSS shorthand in gene
 *	[http://sonspring.com/journal/css-redundancy](http://sonspring.com/journal/css-redundancy)
 *	[http://dustindiaz.com/css-shorthand](http://dustindiaz.com/css-shorthand)
 
-### General coding principles
-*	Add css through external files.
-*	Css links should always be in the `<head>` of the document and before any `<script>` declarations.
-*	Use the `<link />` tag to include, never the @import.
-  Including a stylesheet
-  
-		<link rel="stylesheet" type="text/css" href="myStylesheet.css" />
-	
-*	Don't use inline styling
-
-		<p style="font-size: 12px; color: #FFFFFF">This is poor form, I say</p>
-
-*	Don't include styles inline in the document, either in a style tag or on the elements. It's harder to track down style rules.
-*	Use a reset css file (like Eric Meyers reset) to zero our cross-browser weirdness.
-*	Use a font-normalization file like YUI fonts.css
-*	Elements that occur only once inside a document should use IDs, otherwise, use classes.
-*	Understand cascading and selector specificity so you can write very terse and effective code.
-*	Write selectors that are optimized for speed. Aka:
-	*	where possible, avoid expensive css selectors. 
-	*	Avoid the *	wildcard selector. 
-	*	Don't qualify ID selectors (e.g. div#myid) or class selectors (e.g. table.results) unless its neccessary for readability or for efficiency. 
-  
-  More on [writing efficient css on the MDC](https://developer.mozilla.org/en/Writing_Efficient_CSS).
-
-#### Reasonable use of qualifying class selectors
+##### Reasonable use of qualifying class selectors
 
 	.error {color:#ff0000;}
 	input[type=text].error, textarea.error {background-color:#ffe6e6;}
@@ -529,9 +585,11 @@ Validation
 
 References
 ----------
+
 Thanks to the following sites for inspiration and reuse.
 
 *	[XHTML Integrity Standards](http://www.bbc.co.uk/guidelines/futuremedia/technical/xhtml_integrity.shtml)
 *	[Fellowship Technologies - Design Patterns and Code Standards](http://developer.fellowshipone.com/patterns/code.php)
 *	[Isobar Code Standards & Front-End Development Best Practices](http://na.isobar.com/standards/)
 *   [Code Conventions for the JavaScript Programming Language](http://javascript.crockford.com/code.html)
+*   [BBC Semantic Markup](http://www.bbc.co.uk/guidelines/futuremedia/technical/semantic_markup.shtml)

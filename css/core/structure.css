@@ -73,9 +73,16 @@ body { }
 		    font-size: 0.9em;
 	    }
 		    #toc li li a {
+                display: block;
 			    font-weight: bold;
 			    color: #333;
 		    }
+            #toc li li a.toc-expandable {
+                background: url(../../images/plus-small.png) no-repeat right top;
+            }
+            #toc li li a.toc-collapsible {
+                background: url(../../images/minus-small.png) no-repeat right top;
+            }
 			    #toc li li li a {
 				    font-weight: normal;
 				    color: #777;
