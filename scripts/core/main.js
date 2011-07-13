@@ -6,17 +6,17 @@ $('pre>code').each(function(){
 });
 SyntaxHighlighter.all();
 
-require(['core/tableofcontents', 'jquery/quicksearch/jquery.quicksearch'], function(toc){
+require(['tableofcontents', '../jquery/quicksearch/jquery.quicksearch'], function(toc){
     toc.init();
     $('#search').quicksearch('#toc li');
 });
-require(['jquery/jquery.stickyHeader'], function(toc){
+require(['../jquery/jquery.stickyHeader'], function(toc){
     $('body').stickyHeader({
         headlineSelector: '#main>h2'
     });
 });
 
-require(["core/debug"], function() {
+require(["debug"], function() {
     $(function() {
         // forms
         $("#showErrors").click(function(){

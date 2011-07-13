@@ -341,20 +341,39 @@ relativePath: ../
         <h3>Special</h3>
         <h4>Date Fields</h4>
         <pre><code>
+        <div class="field-group cp-dateField">
+            <label for="day" class="field-group-header">Date:</label>
+            <div class="field-item">
+                <label for="day" class="label-text">Day</label>
+                <input type="text" id="day" name="day" />
+            </div>
+            <div class="field-item">
+                <label for="month" class="label-text">Month</label>
+                <select name="month">
+                    <option>Jan</option>
+                </select>
+            </div>
+            <div class="field-item">
+                <label for="year" class="label-text">Year</label>
+                <select name="year">
+                    <option>2010</option>
+                </select>
+            </div>
+        </div>
         &lt;div class=&quot;field-group cp-dateField&quot;&gt;
-            &lt;span class=&quot;field-group-header&quot;&gt;Date:&lt;/span&gt;
+            &lt;label for="day" class="field-group-header"&gt;Date:&lt;/label&gt;
             &lt;div class=&quot;field-item&quot;&gt;
-                &lt;label class=&quot;label-text&quot;&gt;Day&lt;/label&gt;
+                &lt;label for="day" class="label-text"&gt;Day&lt;/label&gt;
                 &lt;input type=&quot;text&quot; name=&quot;day&quot; /&gt;
             &lt;/div&gt;
             &lt;div class=&quot;field-item&quot;&gt;
-                &lt;label class=&quot;label-text&quot;&gt;Month&lt;/label&gt;
+                &lt;label for="month" class="label-text"&gt;Month&lt;/label&gt;
                 &lt;select name=&quot;month&quot;&gt;
                     &lt;option&gt;Jan&lt;/option&gt;
                 &lt;/select&gt;
             &lt;/div&gt;
             &lt;div class=&quot;field-item&quot;&gt;
-                &lt;label class=&quot;label-text&quot;&gt;Year&lt;/label&gt;
+                &lt;label for="year" class="label-text"&gt;Year&lt;/label&gt;
                 &lt;select name=&quot;year&quot;&gt;
                     &lt;option&gt;2010&lt;/option&gt;
                 &lt;/select&gt;
@@ -362,19 +381,19 @@ relativePath: ../
         &lt;/div&gt;
         </code></pre>
         <div class="field-group cp-dateField">
-            <span class="field-group-header">Date:</span>
+            <label for="day" class="field-group-header">Date:</label>
             <div class="field-item">
-                <label class="label-text">Day</label>
+                <label for="day" class="label-text">Day</label>
                 <input type="text" name="day" />
             </div>
             <div class="field-item">
-                <label class="label-text">Month</label>
+                <label for="month" class="label-text">Month</label>
                 <select name="month">
                     <option>Jan</option>
                 </select>
             </div>
             <div class="field-item">
-                <label class="label-text">Year</label>
+                <label for="year" class="label-text">Year</label>
                 <select name="year">
                     <option>2010</option>
                 </select>

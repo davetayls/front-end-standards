@@ -1,5 +1,5 @@
 /*global window define */
-define(['jquery/jquery.tableofcontents'], function () {
+define(['../jquery/jquery.tableofcontents'], function () {
 
     var $toc,
         expandableClass = 'toc-expandable',

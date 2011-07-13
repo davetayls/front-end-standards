@@ -11,6 +11,9 @@ These standards are separated in to requirements which should be testable and gu
 Revision History
 ----------------
 
+13/07/2011
+: Updates to [Javascript Requirements](#javascript-requirements)
+
 05/04/2011
 : Split layout in to requirements and guides
     
@@ -54,6 +57,7 @@ Markup
 3.  All markup should work as expected without [CSS](#css) and [JavaScript](#javascript)
 4.	Markup should be well-formed and [semantically correct](#semantics)
 5.  A set of skip navigation links should be included near the beginning of the page
+6.  [ID's and Classes](#ids_and_classes) should be used appropriately to aid good maintainability
 
 #### Semantics
 
@@ -65,11 +69,6 @@ Markup
 *	Items in list form should always be housed in a UL, OL, or DL, never a set of DIVs or Ps.
 *	`<ul>` and `<ol>` type lists MUST have at least one `<li>` item.
 *	All lists SHOULD be preceded by a header that describes the content of the list. [See example](#lists-header).
-
-##### Forms
-*	Use `label` fields to label each form field
-    
-    *   the `for` attribute should associate itself with the input field, so users can click the labels.
 
 #### Markup Validation Exceptions
 
@@ -378,9 +377,10 @@ For more on reducing stylesheet code redundancy, and using CSS shorthand in gene
 JavaScript
 ----------
 
-### General coding principles
+### Requirements {#javascript-requirements}
+#### General Principles
 *	99% of code should be housed in external javascript files. They should be included at the END of the BODY tag for maximum page performance.
-*	Don't rely on the user-agent string if you don't have to. Do proper feature detection. (More at [Dive Into HTML5: Detection](http://diveintohtml5.org/detect.html) & [jQuery.support docs](http://api.jquery.com/jQuery.support/))
+*	Don't rely on the user-agent string if you don't have to. Do proper feature detection. (More at [Modernizr](http://modernizr.com), [Dive Into HTML5: Detection](http://diveintohtml5.org/detect.html) & [jQuery.support docs](http://api.jquery.com/jQuery.support/))
 *	Don't use `document.write()`.
 *	Large blocks of code should be separated by flowerbox comments to indicate chapters of the file.
 *	Constants or configuration variables (like animation durations, etc.) should be at the top of the file.
@@ -392,47 +392,46 @@ JavaScript
 	
 *	Comment your code! It helps reduce time spent troubleshooting JavaScript functions.
 *	Don't waste your time with <!-- --> comments surrounding your inline javascript, unless you care about Netscape 4. :)
-*	Surround your inline javascript with `<![CDATA[ ]]>` if you're working in XHTML.
 *	Minimize global variables.
 *	When specifying any global variable, clearly identify it
 
 		window.globalVar = { ... }
 
-### Naming Conventions
+#### Naming Conventions
 
 *	All Boolean variables should start with "is". Test for positive conditions
 
 		isValid = (test.value >= 4 && test.success);
 
 *	Name variables and functions logically: For example, popUpWindowForAd rather than myWindow.
-*   Append all variables which are a jQuery object with the `$` symbol (eg `listItems$`).
+*   Prepend all variables which are a jQuery object with the `$` symbol (eg `$listItems`).
 
-### White-space
+#### White-space
 
 In general, the use of whitespace should follow longstanding English reading conventions. Such that, there will be one space after each comma and colon (and semi-colon where applicable), but no spaces immediately inside the right and left sides of parenthesis. In short, we advocate readability within reason. Additionally, braces should always appear on the same line as their preceding argument.
 
-#### Consider the following examples of a JavaScript for-loop...
+##### Consider the following examples of a JavaScript for-loop...
 
-##### Correct
+###### Correct
 
 	for (var i = 0, j = arr.length; i < j; i++) {
 		// Do something.
 	}
 
-##### Incorrect
+###### Incorrect
 
 	for ( var i = 0, j = arr.length; i < j; i++ )
 	{
 		// Do something.
 	}
 
-##### Also incorrect
+###### Also incorrect
 
 	for(var i=0,j=arr.length;i<j;i++){
 		// Do something.
 	}
 
-### JsLint
+#### JsLint
 
 We use [JsLint](http://www.jslint.com) to validate our JavaScript. We recognise that it can be a little strict and so in the defense of sanity we don't mind developers using the `/*jslint*/` comment block to relax the validation process. 
 
@@ -442,6 +441,11 @@ However the following should not be used:
 *   nomen
 *   newcap
 *   on
+
+##### Here are a couple of articles which should help with using jsLint
+
+*   [Include jsLint in your validation using nAnt, batch files or Ajax](http://the-taylors.org/blog/2010/05/25/including-jslint-in-your-validation-using-nant-batch-files-or-ajax/)
+*   [Add jsLint Checking to Visual Studio](http://the-taylors.org/blog/2010/07/09/add-jslint-checking-to-visual-studio/)
 
 
 ### Intellisense and Documenting
@@ -561,8 +565,9 @@ Integrating common UI code
 	</div>
 
 
-Forms TODO
-----------
+Forms
+-----
+
 *	For compound elements (where text is used to label a form element), the `<label>` tag MUST be used to explicitly associate the relevant text label with its form element.
 *	This MUST be done using a 'for' attribute on the label and a pairing 'id' attribute on the element.
 	
@@ -571,17 +576,7 @@ Forms TODO
 *	A label-input pair SHOULD NOT be contained in a `<dl>`, as this provides no additional structural information.
 
 
-We have different types of forms
-
-*	form-stack
-*	form-margin
-
 As this section contains a lot of code samples it has been split in to a [separate page](forms/index.html).
-
-Validation TODO
----------------
-Validation
- 
 
 References
 ----------
