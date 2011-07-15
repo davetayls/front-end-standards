@@ -69,12 +69,12 @@ relativePath: ../
         <pre><code>
         &lt;div class=&quot;field-item&quot;&gt;
             &lt;label for=&quot;formelements-basic&quot; class=&quot;label-text&quot;&gt;Email&lt;/label&gt;
-            &lt;input id=&quot;formelements-basic&quot; type=&quot;text&quot; /&gt;
+            &lt;input id=&quot;formelements-basic&quot; name=&quot;formelements-basic&quot; type=&quot;text&quot; /&gt;
         &lt;/div&gt;
         </code></pre>
         <div class="field-item">
             <label for="formelements-basic" class="label-text">Email</label>
-            <input id="formelements-basic" type="text" />
+            <input id="formelements-basic" name="formelements-basic" type="text" />
         </div>
 
         <h3>Example with required</h3>
@@ -83,38 +83,38 @@ relativePath: ../
             &lt;label class=&quot;label-text&quot;&gt;
                 Email &lt;abbr class=&quot;required&quot; title=&quot;required&quot;&gt;*&lt;/abbr&gt;
             &lt;/label&gt;
-            &lt;input id=&quot;email1&quot; type=&quot;text&quot; value=&quot;text&quot; /&gt;
+            &lt;input id=&quot;email1&quot; name=&quot;email1&quot; type=&quot;text&quot; value=&quot;text&quot; /&gt;
         &lt;/div&gt;
         </code></pre>
         <div class="field-item">
             <label class="label-text">Email <abbr class="required" title="required">*</abbr></label>
-            <input id="email1" type="text" value="text" />									
+            <input id="email1" name="email1" type="text" value="text" />									
         </div>
 
         <h3>Example with other elements</h3>
         <pre><code>
         &lt;div class=&quot;field-item&quot;&gt;
             &lt;label class=&quot;label-text&quot;&gt;Email&lt;/label&gt;
-            &lt;select&gt;
+            &lt;select name=&quot;other-select&quot;&gt;
                 &lt;option value=&quot;&quot;&gt;options&lt;/option&gt;
             &lt;/select&gt;
         &lt;/div&gt;
         &lt;div class=&quot;field-item&quot;&gt;
             &lt;label class=&quot;label-text&quot;&gt;Email&lt;/label&gt;
-            &lt;textarea id=&quot;textareaelem&quot; rows=&quot;10&quot; cols=&quot;30&quot;&gt;
+            &lt;textarea id=&quot;textareaelem&quot; name=&quot;textareaelem&quot; rows=&quot;10&quot; cols=&quot;30&quot;&gt;
             text content
             &lt;/textarea&gt;
         &lt;/div&gt;
         </code></pre>
         <div class="field-item">
             <label class="label-text">Email</label>
-            <select>
+            <select name="other-select">
                 <option value="">options</option>
             </select>
         </div>
         <div class="field-item">
             <label class="label-text">Email</label>
-            <textarea id="textareaelem" rows="10" cols="30">text content</textarea>
+            <textarea id="textareaelem" name="textareaelem" rows="10" cols="30">text content</textarea>
         </div>
 
         <h3>Wrap buttons in a button-group</h3>
