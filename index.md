@@ -10,6 +10,7 @@ These standards are separated in to requirements which should be testable and gu
 
 Revision History
 ----------------
+<p>This version was compiled on <em><time datetime="{{ site.time | date_to_xmlschema }}">{{ site.time }}</time></em></p>
 
 13/07/2011
 : Updates to [Javascript Requirements](#javascript-requirements)
